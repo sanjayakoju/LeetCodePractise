@@ -34,46 +34,36 @@ import java.util.stream.Collectors;
 
 public class ThreeSum {
     public static List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> lists = new ArrayList<>();
-        if (nums.length == 3) {
-            if (nums[0] == 0 && nums[1] == 0 && nums[2] == 0) {
-                List<Integer> list = new ArrayList<>();
-                list.add(nums[0]);
-                list.add(nums[1]);
-                list.add(nums[2]);
-                lists.add(list);
-
-            } else {
-                lists = helper(nums, lists);
-            }
-        } else {
-            lists = helper(nums, lists);
-        }
+         Arrays.sort(nums);
+         Set<List<Integer>> set = new HashSet<>();
+        int l, r;
+         for(int i =0; i<nums.length;i++) {
+//             if(i > 0 && nums[i] == nums[i-1]) {
+//                 continue;
+//             }
+//             int l, r;
+             l = i+1;
+             r = nums.length-1;
+             while (l < r) {
+                 if (nums[i] + nums[l] + nums[r] == 0) {
+                     List<Integer> list = new ArrayList<>();
+                     list.add(nums[i]);
+                     list.add(nums[l]);
+                     list.add(nums[r]);
+                     set.add(list);
+                     l++;
+//                     while (l < r && nums[l] == nums[l-1]) {
+//                         l++;
+//                     }
+                 } else if(nums[i] + nums[l] + nums[r] < 0) {
+                     l++;
+                 } else {
+                     r--;
+                 }
+             }
+         }
+        List<List<Integer>> lists = new ArrayList<>(set);
         return lists;
-    }
-
-    private static List<List<Integer>> helper(int[] nums, List<List<Integer>> lists) {
-        Set<List<Integer>> uniqueList = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i; j < nums.length; j++) {
-                for (int k = j; k < nums.length; k++) {
-
-                    if (i != j && i != k && j != k) {
-                        if ((nums[i] + nums[j] + nums[k]) == 0) {
-                            List<Integer> list = new ArrayList<>();
-                            list.add(nums[i]);
-                            list.add(nums[j]);
-                            list.add(nums[k]);
-                            List<Integer> sortedList = list.stream().sorted().collect(Collectors.toList());
-                            uniqueList.add(sortedList);
-                        }
-                    }
-                }
-            }
-
-        }
-        List<List<Integer>> retuenList = new ArrayList<>(uniqueList);
-        return retuenList;
     }
 
     public static void main(String[] args) {
