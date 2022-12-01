@@ -63,6 +63,12 @@ public class ThreeSum {
              }
          }
         List<List<Integer>> lists = new ArrayList<>(set);
+         char ch = 'A';
+         int b = ch;
+         if(((b >= 65) == false && (b <= 97)) == false) {
+            System.out.println(b);
+        }
+        System.out.println(b);
         return lists;
     }
 
