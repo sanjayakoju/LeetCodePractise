@@ -41,6 +41,7 @@ public class UniqueNumberOfOccurrences {
         }
         Set<Integer> set = new HashSet<>();
         for(Map.Entry<Integer, Integer> e: map.entrySet()){
+            e.getKey();
             if(set.contains(e.getValue())) {
                 return false;
             } else {
