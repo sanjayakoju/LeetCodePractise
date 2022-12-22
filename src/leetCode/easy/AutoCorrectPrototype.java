@@ -24,8 +24,8 @@ public class AutoCorrectPrototype {
     }
 
     public static void main(String[] args) {
-        String words[] = {"duel", "speed", "dule", "cars"};
-        String queries[] = {"spede", "deul"};
+        String words[] = {"duel", "speed", "dule", "cars", "ld", "dl"};
+        String queries[] = {"spede", "deul","dl"};
         List<List<String>> lists = anagrams(words,queries);
         System.out.println(lists.toString());
     }
