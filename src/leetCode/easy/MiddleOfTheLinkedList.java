@@ -31,20 +31,29 @@ public class MiddleOfTheLinkedList {
     static ListNode head;
 
     public ListNode middleNode(ListNode head) {
-        ListNode temp = head;
-        int i = 0;
-        while (temp != null) {
-            temp = temp.next;
-            i++;
+//        ListNode temp = head;
+//        int i = 0;
+//        while (temp != null) {
+//            temp = temp.next;
+//            i++;
+//        }
+//
+//        int mid = (i / 2) + 1;
+//
+//        for (int j = 1;j<mid;j++) {
+//            head = head.next;
+//        }
+//
+//        return head;
+
+        ListNode slow, fast;
+        slow = head;
+        fast = head;
+        while (fast.next!=null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
-
-        int mid = (i / 2) + 1;
-
-        for (int j = 1;j<mid;j++) {
-            head = head.next;
-        }
-
-        return head;
+        return slow;
     }
 
     public static void main(String[] args) {
@@ -53,5 +62,6 @@ public class MiddleOfTheLinkedList {
         list.head.next = new ListNode(15);
         list.head.next.next = new ListNode(4);
         list.head.next.next.next = new ListNode(20);
+
     }
 }

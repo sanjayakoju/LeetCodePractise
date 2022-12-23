@@ -36,13 +36,14 @@ package leetCode.medium;
  */
 public class NumberOfIslands {
     private char [][] g;
+    private int rows, cols;
 
     public int numIslands(char[][] grid) {
         this.g  = grid;
-        int rows = grid.length;
+        rows = grid.length;
         if (rows == 0) return 0;
         int count = 0;
-        int cols = grid[0].length;
+        cols = grid[0].length;
 
         for (int i=0;i<rows;i++) {
             for (int j=0;j<cols;j++) {
@@ -58,7 +59,7 @@ public class NumberOfIslands {
 
     private void dfs(int i, int j) {
         // Boundary case for matrix
-        if(i < 0 || i>= g.length || j < 0 || j>=g[0].length || g[i][j] == '0') return;
+        if(i < 0 || i >= rows || j < 0 || j >= cols || g[i][j] == '0') return;
 
         // marks as visited
         g[i][j] = '0';
