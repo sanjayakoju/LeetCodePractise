@@ -3,8 +3,10 @@ package practise;
 import java.util.HashMap;
 
 /**
- * HashMap does not contain the duplicate key but may contains tha duplicate value, if we provide the duplicate key
- * then it will replace the previous value.
+ * HashMap does not contain the duplicate key but may contains the duplicate value,
+ * if we provide the duplicate key then it will replace the previous value. While hashing different object if the
+ * hash value belong to the same bucket(Hash Collision) then it will put the data in linked list until linked list become 8.
+ * If linked list size is more than 10 then it will used balancing algorithm and put data into balanced tree.
  */
 public class HashMapDemo {
 
@@ -35,6 +37,8 @@ public class HashMapDemo {
 
         String s = "1";
         int a = Integer.parseInt(s);
+        int b = Integer.valueOf(s.toString());
         System.out.println(a);
+        System.out.println(b);
     }
 }

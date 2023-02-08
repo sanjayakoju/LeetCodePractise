@@ -41,7 +41,7 @@ public class ComparableDemo implements Comparable<ComparableDemo> {
         list.add(new ComparableDemo("Sanjaya", "BKT", 28));
         list.add(new ComparableDemo("Omkar", "BTL", 32));
         list.add(new ComparableDemo("Shrawan", "BRT", 29));
-        Collections.sort(list, ComparableDemo::compareTo);
+        Collections.sort(list);
         for(ComparableDemo l: list) {
             System.out.println(l);
         }
