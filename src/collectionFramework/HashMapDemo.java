@@ -10,8 +10,6 @@ public class HashMapDemo {
 		hashMap.put("Science", 80);
 		hashMap.put("Ea", 10);
 		hashMap.put("FB", 10);
-		
-		
 		System.out.println(hashMap);
 	}
 }
