@@ -57,9 +57,12 @@ public class SudokuSolver {
     }
     public boolean isSafe(char[][]board , int row, int col, int number){
         for(int i = 0; i< board.length; i++){
-            if(board[i][col] == (char)(number+'0')) return false;
-            if(board[row][i] == (char)(number+'0')) return false;
-            if(board[(row/3)*3 + i/3][(col/3)*3 + i%3] ==(char)(number+'0')) return false;
+            if(board[i][col] == (char)(number+'0'))
+                return false;
+            if(board[row][i] == (char)(number+'0'))
+                return false;
+            if(board[(row/3)*3 + i/3][(col/3)*3 + i%3] ==(char)(number+'0'))
+                return false;
         }
         return true;
     }
