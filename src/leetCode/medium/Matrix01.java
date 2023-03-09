@@ -33,6 +33,7 @@ import java.util.Queue;
  */
 public class Matrix01 {
 
+    // BFS Approach
     public static int[][] updateMatrix(int[][] mat) {
         int m = mat.length;
         int n = mat[0].length;
@@ -59,13 +60,46 @@ public class Matrix01 {
             for (int d[] : direction) {
                 int r = cell[0] + d[0];
                 int c = cell[1] + d[1];
-                if (r < 0 || r >= m || c < 0 || c >= n || mat[r][c] != -1) continue;
+                // Boundary case for matrix
+                if (r < 0 || r >= m || c < 0 || c >= n || mat[r][c] != -1)
+                    continue;
                 queue.add(new int[]{r, c});
                 mat[r][c] = mat[cell[0]][cell[1]] + 1;
             }
         }
 
         return mat;
+    }
+
+    // DFS Approach
+    public static int[][] updateMatrix1(int[][] mat) {
+        int m = mat.length;
+        int n = mat[0].length;
+        int[][] resultMatrix = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (mat[i][j] > 0) {
+                    resultMatrix[i][j] = dfs(mat, i, j, new boolean[m][n]);
+                }
+            }
+        }
+        return resultMatrix;
+    }
+
+    public static int dfs(int[][] mat, int i, int j, boolean[][] visited) {
+        if (i < 0 || i >= mat.length || j < 0 || j >= mat[0].length || visited[i][j])
+            return 1000;
+        if (mat[i][j] == 0)
+            return 0;
+        visited[i][j] = true;
+        int val = 1 + Math.min(
+                Math.min(dfs(mat, i + 1, j, visited),
+                        dfs(mat, i - 1, j, visited)),
+                Math.min(dfs(mat, i, j + 1, visited),
+                        dfs(mat, i, j - 1, visited))
+        );
+        visited[i][j] = false;
+        return val;
     }
 
     public static void main(String[] args) {

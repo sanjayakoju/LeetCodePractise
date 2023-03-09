@@ -59,12 +59,13 @@ public class NumberOfIslands {
 
     private void dfs(int i, int j) {
         // Boundary case for matrix
-        if(i < 0 || i >= rows || j < 0 || j >= cols || g[i][j] == '0') return;
+        if(i < 0 || i >= rows || j < 0 || j >= cols || g[i][j] == '0')
+            return;
 
         // marks as visited
         g[i][j] = '0';
 
-        // Make recursive call in all 4 adjacent directions
+        // Make recursive call in all 4 adjacent directions/ coordinates
         dfs(i-1,j); // UP
         dfs(i+1,j); // DOWN
         dfs(i,j-1); // LEFT

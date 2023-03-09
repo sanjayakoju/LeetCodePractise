@@ -82,8 +82,7 @@ public class MedianOfTwoSortedArrays {
         System.out.println(getMedian(arr1, arr2, n, m));
     }
 
-    static double getMedian(int A[], int B[],
-                            int n, int m) {
+    static double getMedian(int A[], int B[], int n, int m) {
         int i = 0;
         int j = 0;
         int count;
