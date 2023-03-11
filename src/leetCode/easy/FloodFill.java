@@ -62,8 +62,8 @@ public class FloodFill {
 
         dfs(image,sr-1,sc,rows,cols,color,source);
         dfs(image,sr+1,sc,rows,cols,color,source);
-        dfs(image,sr-1,sc-1,rows,cols,color,source);
-        dfs(image,sr-1,sc+1,rows,cols,color,source);
+        dfs(image,sr,sc-1,rows,cols,color,source);
+        dfs(image,sr,sc+1,rows,cols,color,source);
     }
     public static void main(String[] args) {
         int arr[][] = {
