@@ -1,13 +1,13 @@
-package leetCode.easy;
+package algorithm.fastAndSlowPointers;
 
 public class ListNode {
     int val;
-    public ListNode next;
+    ListNode next;
 
     ListNode() {
     }
 
-    public ListNode(int val) {
+    ListNode(int val) {
         this.val = val;
     }
 

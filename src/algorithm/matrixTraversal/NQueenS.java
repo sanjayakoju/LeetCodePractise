@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.matrixTraversal;
 
 
 /* Java program to solve N Queen Problem using
