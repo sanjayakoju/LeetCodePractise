@@ -1,6 +1,7 @@
 package stream;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -28,6 +29,8 @@ public class StreamDemo {
 
         employees.add(e1);
         employees.add(e2);
+
+        Collections.unmodifiableList(employees);
         return employees;
     }
 
