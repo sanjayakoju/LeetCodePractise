@@ -1,5 +1,9 @@
-package datastucture.binaarysearchtree;
+package datastucture.searching.binaarysearchtree;
 
+
+/**
+ * Time Complexity O(log n)
+ */
 public class BinarySearchTree {
 
     static class Node {
