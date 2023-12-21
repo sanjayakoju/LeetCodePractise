@@ -1,4 +1,4 @@
-package assessment.ford.carInheritance;
+package assessment.htc.ford.carInheritance;
 
 public abstract class Car {
 

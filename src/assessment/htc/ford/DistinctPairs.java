@@ -1,4 +1,4 @@
-package assessment.ford;
+package assessment.htc.ford;
 
 public class DistinctPairs {
 
