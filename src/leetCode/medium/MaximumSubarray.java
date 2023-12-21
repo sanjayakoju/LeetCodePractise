@@ -1,6 +1,7 @@
 package leetCode.medium;
 
 /**
+ * Leetcode 53
  * Given an integer array nums, find the
  * subarray
  *  which has the largest sum and return its sum.
@@ -37,17 +38,13 @@ public class MaximumSubarray {
         int localMax = 0;
         int globalMax = Integer.MIN_VALUE;
         for(int i=0;i<nums.length;i++) {
-            localMax = max(nums[i], nums[i] + localMax);
+            localMax = Math.max(nums[i], nums[i] + localMax);
 
             if (localMax > globalMax) {
                 globalMax = localMax;
             }
         }
         return globalMax;
-    }
-
-    static int max(int a, int b) {
-        return (a > b) ?  a : b;
     }
 
     public static void main(String[] args) {

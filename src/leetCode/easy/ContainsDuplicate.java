@@ -1,13 +1,13 @@
 package leetCode.easy;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
+ * Leetcode 217
  * Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
- *
- *
- *
  * Example 1:
  *
  * Input: nums = [1,2,3,1]
@@ -37,6 +37,15 @@ public class ContainsDuplicate {
             } else {
                 map.put(nums[i],1);
             }
+        }
+
+        // Using HashSet
+        Set<Integer> set = new HashSet<>();
+        for (int num: nums) {
+            if (set.contains(num)) {
+                return  true;
+            }
+            set.add(num);
         }
         return false;
     }

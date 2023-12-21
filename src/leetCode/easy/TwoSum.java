@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Leetcode 1
  * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
  *
  * You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -40,16 +41,16 @@ public class TwoSum {
         int returnArr [] = new int[2];
 
         // Brute Force solution time complexity O(n2)
-//        for(int i =0;i<nums.length-1;i++) {
-//            for(int j=i+1;j<nums.length;j++) {
-//                if((nums[i]+nums[j]) == target) {
-//                    returnArr[0] = i;
-//                    returnArr[1] = j;
-//                    break;
-//                }
-//
-//            }
-//        }
+        for(int i =0;i<nums.length-1;i++) {
+            for(int j=i+1;j<nums.length;j++) {
+                if((nums[i]+nums[j]) == target) {
+                    returnArr[0] = i;
+                    returnArr[1] = j;
+                    break;
+                }
+
+            }
+        }
 
         // Better using HashMap Time complexity O(N)
         Map<Integer, Integer> map = new HashMap<>();
