@@ -37,8 +37,8 @@ public class MaximumSubarray {
 
         int localMax = 0;
         int globalMax = Integer.MIN_VALUE;
-        for(int i=0;i<nums.length;i++) {
-            localMax = Math.max(nums[i], nums[i] + localMax);
+        for (int num : nums) {
+            localMax = Math.max(num, num + localMax);
 
             if (localMax > globalMax) {
                 globalMax = localMax;
