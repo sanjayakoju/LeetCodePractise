@@ -37,7 +37,7 @@ public class ReverseInteger {
         if (rev > Integer.MAX_VALUE || rev < Integer.MIN_VALUE) {
             return 0;
         }
-        return (int)rev;
+        return (int) rev;
     }
     public static void main(String[] args) {
         int num = -123;

@@ -7,8 +7,8 @@ public class SlidingWindow {
         for (int i=0;i<k;i++) {
             windowSum = windowSum + n[i];
         }
-        for (int end = k; end < n.length; end++) {
-            windowSum = windowSum + n[end] - n[end-k];
+        for (int j = k; j < n.length; j++) {
+            windowSum = windowSum + n[j] - n[j-k];
             maxSum = Math.max(windowSum, maxSum);
         }
         return maxSum;
