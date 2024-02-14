@@ -3,7 +3,7 @@ package algorithm.kadane;
 public class MaximumSubArraySum {
 
 
-    // Kadane Algorithm
+    // Kadane's Algorithm
     public static int  maxSum(int arr[]) {
         int sum = arr[0];
         int maxSum = arr[0];
