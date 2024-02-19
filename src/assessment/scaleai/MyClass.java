@@ -2,7 +2,7 @@ package assessment.scaleai;
 
 import java.io.*;
 import java.util.*;
-import javafx.util.Pair;
+//import javafx.util.Pair;
 
 /**
 
