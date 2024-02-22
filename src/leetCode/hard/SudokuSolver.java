@@ -31,18 +31,52 @@ package leetCode.hard;
  */
 public class SudokuSolver {
 
-    public static void solveSudoku(char[][] board) {
-        solver(board);
+    public static boolean solveSudoku(char[][] board) {
+        return solver(board, 0, 0);
     }
 
-    public static boolean solver(char[][] board) {
+    public static boolean solver(char[][] board, int row, int col) {
+
+//        if (row == board.length) {
+//            return true;
+//        }
+//
+//        int nRow = 0;
+//        int nCol = 0;
+//
+//        if (col != board.length - 1) {
+//            nRow = row;
+//            nCol = col + 1;
+//        } else {
+//            nRow = row + 1;
+//            nCol = col;
+//        }
+//
+//        if (board[row][col] != '.') {
+//            return solver(board, nRow, nCol);
+//        } else {
+//            for (char i = '1'; i <= '9'; i++) {
+//                if (isSafe(board, row, col, i)) {
+//                    board[row][col] = i;
+//                    if (solver(board, nRow, nCol)) {
+//                        return true;
+//                    } else {
+//                        board[row][col] = '.';
+//                    }
+//                }
+//            }
+//        }
+//
+//        return false;
+
+
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if (board[i][j] == '.') {
                     for (char k = '1'; k <= '9'; k++) {
-                        if (isValid(board, i, j, k)) {
+                        if (isSafe(board, i, j, k)) {
                             board[i][j] = k;
-                            if (solver(board) == true) {
+                            if (solver(board, 0, 0)) {
                                 return true;
                             } else {
                                 board[i][j] = '.';
@@ -54,18 +88,38 @@ public class SudokuSolver {
             }
         }
         return true;
+
+
     }
 
-    public static boolean isValid(char[][] board, int row, int col, char k) {
+    public static boolean isSafe(char[][] board, int row, int col, char k) {
         for (int i = 0; i < 9; i++) {
+
+            // Check row
             if (board[row][i] == k) {
                 return false;
             }
+
+            // Check col
             if (board[i][col] == k) {
                 return false;
             }
-            if (board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3] == k) {
-                return false;
+
+//             Check 3 * 3 matrix
+//            if (board[3 * (row / 3) + i % 3] [3 * (col / 3) + i % 3] == k) {
+//                return false;
+//            }
+        }
+
+        //grid
+        int sr = (row/3) * 3;
+        int sc = (col/3) * 3;
+
+        for (int i = sr; i<sr+3;i++) {
+            for (int j = sc; j <sc+3; j++) {
+                if (board[i][j] == k) {
+                    return false;
+                }
             }
         }
         return true;
@@ -83,7 +137,7 @@ public class SudokuSolver {
                 {'.', '9', '1', '.', '3', '6', '.', '7', '5'},
                 {'7', '.', '6', '1', '8', '5', '4', '.', '9'}
         };
-        solveSudoku(board);
+        System.out.println(solveSudoku(board));
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++)
