@@ -7,7 +7,7 @@ public class Graph {
     private int vertices;
 
     // Adjacency Lists
-    private LinkedList<Integer> adjacency[];
+    private LinkedList[] adjacency;
 
     public Graph(int vertices) {
         this.vertices = vertices;
