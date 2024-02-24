@@ -7,36 +7,30 @@ package assessment.scaleai.hireart.subsudoku;
             int n = matrix.length;
 
             // Check rows
-            for (int[] row : matrix) {
-                if (!isValidSet(row, n)) {
+            for (int row = 0; row < n; row++) {
+                if (!isValid(matrix, row, 0, n)) {
                     return false;
                 }
             }
 
             // Check columns
             for (int col = 0; col < n; col++) {
-                int[] column = new int[n];
-                for (int row = 0; row < n; row++) {
-                    column[row] = matrix[row][col];
-                }
-                if (!isValidSet(column, n)) {
+                if (!isValid(matrix, 0, col, n)) {
                     return false;
                 }
             }
-
             return true;
         }
 
-        private static boolean isValidSet(int[] array, int n) {
-            int[] count = new int[n + 1];
-
-            for (int num : array) {
-                if (num < 1 || num > n || count[num] > 0) {
+        private static boolean isValid(int[][] matrix, int row, int col, int n) {
+            boolean[] seen = new boolean[n + 1];
+            for (int i = 0; i < n; i++) {
+                int num = (col == 0) ? matrix[row][i] : matrix[i][col];
+                if (num < 1 || num > n || seen[num]) {
                     return false;
                 }
-                count[num]++;
+                seen[num] = true;
             }
-
             return true;
         }
 
@@ -56,53 +50,6 @@ package assessment.scaleai.hireart.subsudoku;
             System.out.println(isSubSudoku(grid1)); // Output: true
             System.out.println(isSubSudoku(grid2)); // Output: false
 
-            System.out.println(isSubSudokus(grid1)); // Output: true
-            System.out.println(isSubSudokus(grid2)); // Output: false
-
-        }
-
-
-// Optimized
-        public static boolean isSubSudokus(int[][] matrix) {
-            int n = matrix.length;
-
-            // Check rows
-            for (int row = 0; row < n; row++) {
-                if (!isValids(matrix, row, 0, n)) {
-                    return false;
-                }
-            }
-
-            // Check columns
-            for (int col = 0; col < n; col++) {
-                if (!isValids(matrix, 0, col, n)) {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        private static boolean isValids(int[][] matrix, int row, int col, int n) {
-            boolean[] seen = new boolean[n + 1];
-
-            for (int i = 0; i < n; i++) {
-                int num;
-
-                // Check row
-                if (col == 0) {
-                    num = matrix[row][i];
-                } else { // Check column
-                    num = matrix[i][col];
-                }
-
-                if (num < 1 || num > n || seen[num]) {
-                    return false;
-                }
-                seen[num] = true;
-            }
-
-            return true;
         }
 
     }

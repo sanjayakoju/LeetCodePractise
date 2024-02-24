@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Wordwrap {
 
-    public static List<String> wrapLines(String [] words, int wrapLength){
+    public static List<String> wrapLines(String [] words, int wrapLength) {
         List<String> wrappedLines= new ArrayList<>();
         List<String> tempList= new ArrayList<>();
         int currentLength=0;

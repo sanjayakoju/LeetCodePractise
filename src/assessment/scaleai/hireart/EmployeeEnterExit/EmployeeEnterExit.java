@@ -6,10 +6,11 @@ public class EmployeeEnterExit {
 
     public static List<List<String>> listOfEmployees(String[][] records) {
         List<List<String>> result = new ArrayList<>();
-        List<String> exitRecords = new ArrayList<>();
         List<String> entryRecords = new ArrayList<>();
+        List<String> exitRecords = new ArrayList<>();
         Set<String> recordChecker = new HashSet<>();
-        for (String s[] : records) {
+
+        for (String[] s : records) {
             String name = s[0];
             String status = s[1];
 
@@ -17,35 +18,40 @@ public class EmployeeEnterExit {
                 if (recordChecker.contains(name)) {
                     entryRecords.add(name);
                     exitRecords.remove(name);
-                }
-                else {
+                } else {
                     entryRecords.add(name);
                     recordChecker.add(name);
                 }
             } else if (status.equals("exit")) {
-                if(recordChecker.contains(name)){
+                if (recordChecker.contains(name)) {
                     entryRecords.remove(name);
                     recordChecker.remove(name);
-                }
-                else{
+                } else {
                     exitRecords.add(name);
                 }
 
             }
         }
-        result.add(removeDuplicates(entryRecords));
-        result.add(removeDuplicates(exitRecords));
+//        result.add(removeDuplicates(entryRecords));
+//        result.add(removeDuplicates(exitRecords));
+//        return result;
+
+        result.add(new ArrayList<>(new HashSet<>(entryRecords)));
+        result.add(new ArrayList<>(new HashSet<>(exitRecords)));
         return result;
+
+//        return Arrays.asList(removeDuplicates(entryRecords), removeDuplicates(exitRecords));
     }
 
-    public static List<String> removeDuplicates(List<String> duplicateStrings){
-        List<String> nonDuplicateString= new ArrayList<>();
-        for(String s: duplicateStrings){
-            if(!nonDuplicateString.contains(s)){
-                nonDuplicateString.add(s);
-            }
-        }
-        return nonDuplicateString;
+    public static List<String> removeDuplicates(List<String> duplicateStrings) {
+//        List<String> nonDuplicateString = new ArrayList<>();
+//        for (String s : duplicateStrings) {
+//            if (!nonDuplicateString.contains(s)) {
+//                nonDuplicateString.add(s);
+//            }
+//        }
+//        return nonDuplicateString;
+        return new ArrayList<>(new HashSet<>(duplicateStrings));
     }
 
     public static void main(String[] args) {
@@ -76,32 +82,31 @@ public class EmployeeEnterExit {
                 {"Joe", "exit"}
 
         };
-String[][] records1={
-        {"Paul", "enter"},
-        {"Paul", "exit"}
-};
+        String[][] records1 = {
+                {"Paul", "enter"},
+                {"Paul", "exit"}
+        };
 
-String[][] records2={
-        {"Paul", "enter"},
-        {"Paul", "enter"},
-        {"Paul", "exit"},
-        {"Paul", "exit"}
-};
+        String[][] records2 = {
+                {"Paul", "enter"},
+                {"Paul", "enter"},
+                {"Paul", "exit"},
+                {"Paul", "exit"}
+        };
 
-        String[][] records3={
+        String[][] records3 = {
                 {"Raj", "enter"},
                 {"Paul", "enter"},
                 {"Paul", "exit"},
                 {"Paul", "exit"},
                 {"Paul", "enter"},
-                {"Raj","enter"}
+                {"Raj", "enter"}
         };
 
 
-
         System.out.println(listOfEmployees(records));
-         System.out.println(listOfEmployees(records1));
-       System.out.println(listOfEmployees(records2));
-      System.out.println(listOfEmployees(records3));
+        System.out.println(listOfEmployees(records1));
+        System.out.println(listOfEmployees(records2));
+        System.out.println(listOfEmployees(records3));
     }
 }

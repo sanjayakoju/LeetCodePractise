@@ -11,22 +11,18 @@ public class SubSudokuDFS {
                 return false;
             }
         }
-
         return true;
     }
 
     private static boolean isValid(int[][] matrix, int row, int col, int n) {
         boolean[] seen = new boolean[n + 1];
-
         for (int i = 0; i < n; i++) {
             int num = (col == 0) ? matrix[row][i] : matrix[i][col];
-
             if (num < 1 || num > n || seen[num]) {
                 return false;
             }
             seen[num] = true;
         }
-
         return true;
     }
 
@@ -43,8 +39,22 @@ public class SubSudokuDFS {
                 {3, 1, 2}
         };
 
+        int[][] grid3 = {
+                {1, 2, 3},
+                {3, 2, 1},
+                {3, 1, 2}
+        };
+
+        int[][] grid4 = {
+                {1, 3, 2},
+                {3, 2, 1},
+                {2, 1, 3}
+        };
+
         System.out.println(isSubSudoku(grid1)); // Output: true
         System.out.println(isSubSudoku(grid2)); // Output: false
+        System.out.println(isSubSudoku(grid3)); // Output: false
+        System.out.println(isSubSudoku(grid4)); // Output: true
     }
 }
 
