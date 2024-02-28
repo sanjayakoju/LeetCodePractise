@@ -21,6 +21,7 @@ public class CourseSharing1 {
        // System.out.println(studentCourses);
         // Find shared courses for each pair of students
         List<String> students = new ArrayList<>(studentCourses.keySet());
+
         for (int i = 0; i < students.size(); i++) {
             String student1 = students.get(i);
             Set<String> courses1 = studentCourses.get(student1);

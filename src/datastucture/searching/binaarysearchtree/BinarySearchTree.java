@@ -54,7 +54,8 @@ public class BinarySearchTree {
         addRecursive(node1,2);
         addRecursive(node1,3);
         boolean isFound = containsNodeRecursive(node1,5);
-        System.out.printf("Is Found : "+isFound);
+        System.out.println("Is Found : "+isFound);
+        System.out.println("Is Found : "+containsNodeRecursive(node1,3));
     }
 
 }
