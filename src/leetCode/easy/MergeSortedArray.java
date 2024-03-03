@@ -51,30 +51,32 @@ import java.util.Arrays;
 public class MergeSortedArray {
 
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        // int p1 = num1s.length;
-        // int p2 = num2s.lenght;
-        // int i = (m + n) - 1;
+        int p1 = m - 1;
+        int p2 = n - 1;
+        int i = m + n - 1;
 
-        // while (p1 <= 0 && p2 <= 0) {
-        //     if(nums1[p1] < nums2[p2]) {
-
-        //     }
-        // }
-
-        int j = 0;
-        for(int i=m;i<nums1.length;i++) {
-
-            if(nums1[i] == 0) {
-//                    System.out.println(nums1[i]);
-//                    System.out.println(nums2[j]);
-                    System.out.println(nums2[j]);
-                    nums1[i] = nums2[j];
-                    j++;
+        while (p2 >= 0) {
+            if (p1 >= 0 && nums1[p1] > nums2[p2]) {
+                nums1[i--] = nums1[p1--];
+            } else {
+                nums1[i--] = nums2[p2--];
             }
         }
-        System.out.println(Arrays.toString(nums1));
 
-        Arrays.sort(nums1);
+//        int j = 0;
+//        for(int i=m;i<nums1.length;i++) {
+//
+//            if(nums1[i] == 0) {
+////                    System.out.println(nums1[i]);
+////                    System.out.println(nums2[j]);
+//                    System.out.println(nums2[j]);
+//                    nums1[i] = nums2[j];
+//                    j++;
+//            }
+//        }
+//        System.out.println(Arrays.toString(nums1));
+//
+//        Arrays.sort(nums1);
         System.out.println(Arrays.toString(nums1));
     }
 
