@@ -43,5 +43,7 @@ public class JumpGame {
 
     public static void main(String[] args) {
         System.out.println(canJump(new int[]{2,3,1,1,4})); // true
+        System.out.println(canJump(new int[]{2,3,1,1,4,5})); // true
+        System.out.println(canJump(new int[]{2,3,1,1,0,5})); // false
     }
 }
