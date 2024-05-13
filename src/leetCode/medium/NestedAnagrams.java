@@ -27,7 +27,7 @@ public class NestedAnagrams {
         int[] ch = new int[128];
         for(int i = 0; i < str1.length();i++){
             ch[str1.charAt(i) - 'a']++;
-            ch[str2.charAt(i)-'a']--;
+            ch[str2.charAt(i) - 'a']--;
         }
         for(int c : ch){
             if(c>0) return false;
