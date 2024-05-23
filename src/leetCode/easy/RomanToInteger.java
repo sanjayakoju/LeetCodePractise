@@ -64,9 +64,9 @@ public class RomanToInteger {
 
             if (i + 1 < n && getValue(s.charAt(i + 1)) > getValue(currentChar)) {
                 // subtract the val if next element is greater than current
-                val -= getValue(currentChar);
+                val = val - getValue(currentChar);
             } else {
-                val += getValue(currentChar);
+                val = val + getValue(currentChar);
             }
         }
 

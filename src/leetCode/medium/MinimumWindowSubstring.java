@@ -43,51 +43,111 @@ import java.util.Map;
  */
 public class MinimumWindowSubstring {
 
+//    public static String minWindow(String s, String t) {
+//        if (s == null || s.isEmpty() || t == null || t.isEmpty())
+//            return "";
+//
+//        Map<Character, Integer> tMap = new HashMap<>();
+//        for (char c : t.toCharArray()) {
+//            tMap.put(c, tMap.getOrDefault(c, 0) + 1);
+//        }
+//
+//        int required = tMap.size();
+//
+//        int left = 0, right = 0;
+//        int formed = 0;
+//        Map<Character, Integer> windowCounts = new HashMap<>();
+//        int[] ans = {-1, 0, 0};
+//
+//        while (right < s.length()) {
+//            char c = s.charAt(right);
+//            windowCounts.put(c, windowCounts.getOrDefault(c, 0) + 1);
+//
+//            if (tMap.containsKey(c) && windowCounts.get(c).intValue() == tMap.get(c).intValue()) {
+//                formed++;
+//            }
+//
+//            while (left <= right && formed == required) {
+//                c = s.charAt(left);
+//
+//                if (ans[0] == -1 || right - left + 1 < ans[0]) {
+//                    ans[0] = right - left + 1;
+//                    ans[1] = left;
+//                    ans[2] = right;
+//                }
+//
+//                windowCounts.put(c, windowCounts.get(c) - 1);
+//                if (tMap.containsKey(c) && windowCounts.get(c) < tMap.get(c)) {
+//                    formed--;
+//                }
+//
+//                left++;
+//            }
+//
+//            right++;
+//        }
+//
+//        return ans[0] == -1 ? "" : s.substring(ans[1], ans[2] + 1);
+//    }
+
+
     public static String minWindow(String s, String t) {
         if (s == null || s.isEmpty() || t == null || t.isEmpty())
             return "";
 
-        Map<Character, Integer> tMap = new HashMap<>();
+        // Create a map to store the frequency of characters in t
+        Map<Character, Integer> targetFreq = new HashMap<>();
         for (char c : t.toCharArray()) {
-            tMap.put(c, tMap.getOrDefault(c, 0) + 1);
+            targetFreq.put(c, targetFreq.getOrDefault(c, 0) + 1);
         }
 
-        int required = tMap.size();
+        // Create a map to track the frequency of characters in the current window
+        Map<Character, Integer> windowFreq = new HashMap<>();
 
-        int left = 0, right = 0;
-        int formed = 0;
-        Map<Character, Integer> windowCounts = new HashMap<>();
-        int[] ans = {-1, 0, 0};
+        int required = targetFreq.size(); // Number of unique characters in t
+        int left = 0, right = 0; // Pointers for the sliding window
+        int formed = 0; // Number of unique characters formed in the window
 
+        // Variables to track the minimum window substring
+        int minLen = Integer.MAX_VALUE;
+        int minLeft = 0, minRight = 0;
+
+        // Sliding window algorithm
         while (right < s.length()) {
             char c = s.charAt(right);
-            windowCounts.put(c, windowCounts.getOrDefault(c, 0) + 1);
+            windowFreq.put(c, windowFreq.getOrDefault(c, 0) + 1);
 
-            if (tMap.containsKey(c) && windowCounts.get(c).intValue() == tMap.get(c).intValue()) {
+            // Check if the current character forms a required character in the window
+            if (targetFreq.containsKey(c) && windowFreq.get(c).intValue() == targetFreq.get(c).intValue()) {
                 formed++;
             }
 
+            // Try to shrink the window by moving the left pointer
             while (left <= right && formed == required) {
-                c = s.charAt(left);
-
-                if (ans[0] == -1 || right - left + 1 < ans[0]) {
-                    ans[0] = right - left + 1;
-                    ans[1] = left;
-                    ans[2] = right;
+                // Update the minimum window substring if a smaller window is found
+                if (right - left + 1 < minLen) {
+                    minLen = right - left + 1;
+                    minLeft = left;
+                    minRight = right;
                 }
 
-                windowCounts.put(c, windowCounts.get(c) - 1);
-                if (tMap.containsKey(c) && windowCounts.get(c) < tMap.get(c)) {
+                // Remove the leftmost character from the window
+                char leftChar = s.charAt(left);
+                windowFreq.put(leftChar, windowFreq.get(leftChar) - 1);
+
+                // Check if removing this character breaks the required condition
+                if (targetFreq.containsKey(leftChar) && windowFreq.get(leftChar).intValue() < targetFreq.get(leftChar).intValue()) {
                     formed--;
                 }
 
-                left++;
+                left++; // Move the left pointer to the right
             }
 
-            right++;
+            right++; // Move the right pointer to the right
         }
 
-        return ans[0] == -1 ? "" : s.substring(ans[1], ans[2] + 1);
+        // Return the minimum window substring if found, otherwise return an empty string
+        return minLen == Integer.MAX_VALUE ? "" : s.substring(minLeft, minRight + 1);
     }
 
     public static void main(String[] args) {

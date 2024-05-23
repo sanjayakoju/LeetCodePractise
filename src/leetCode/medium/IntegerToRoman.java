@@ -60,6 +60,6 @@ public class IntegerToRoman {
 
     public static void main(String[] args) {
 
-        System.out.println(intToRoman(3000));
+        System.out.println(intToRoman(621));
     }
 }
