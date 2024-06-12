@@ -1,6 +1,7 @@
 package leetCode.easy;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * LeetCode: 13. Roman to Integer
@@ -54,24 +55,59 @@ import java.util.HashMap;
  */
 public class RomanToInteger {
 
-    // S = "DCXXI"
     public static int romanToInt(String s) {
-        int val = 0;
-        int n = s.length();
+        // Create a map of Roman numerals to their integer values
+        Map<Character, Integer> romanMap = new HashMap<>();
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
 
-        for (int i = 0; i < n; i++) {
+        int total = 0;
+        int prevValue = 0;
+
+        // Loop through each character in the Roman numeral string from front to back
+        for (int i = 0; i < s.length(); i++) {
             char currentChar = s.charAt(i);
+            int currentValue = romanMap.get(currentChar);
 
-            if (i + 1 < n && getValue(s.charAt(i + 1)) > getValue(currentChar)) {
-                // subtract the val if next element is greater than current
-                val = val - getValue(currentChar);
+            // If the current value is greater than the previous value, subtract twice the previous value
+            // (since it was already added in the previous iteration) and add the current value
+            if (i > 0 && currentValue > prevValue) {
+                total += currentValue - 2 * prevValue;
             } else {
-                val = val + getValue(currentChar);
+                // Otherwise, add the current value to the total
+                total += currentValue;
             }
+
+            // Update the previous value
+            prevValue = currentValue;
         }
 
-        return val;
+        return total;
     }
+
+    // S = "DCXXI"
+//    public static int romanToInt(String s) {
+//        int val = 0;
+//        int n = s.length();
+//
+//        for (int i = 0; i < n; i++) {
+//            char currentChar = s.charAt(i);
+//
+//            if (i + 1 < n && getValue(s.charAt(i + 1)) > getValue(currentChar)) {
+//                // subtract the val if next element is greater than current
+//                val = val - getValue(currentChar);
+//            } else {
+//                val = val + getValue(currentChar);
+//            }
+//        }
+//
+//        return val;
+//    }
 
     private static int getValue(char romanNumeral) {
         switch (romanNumeral) {
