@@ -66,69 +66,22 @@ public class RomanToInteger {
         romanMap.put('D', 500);
         romanMap.put('M', 1000);
 
-        int total = 0;
-        int prevValue = 0;
+        int val = 0;
+        int len = s.length();
 
-        // Loop through each character in the Roman numeral string from front to back
-        for (int i = 0; i < s.length(); i++) {
+        for (int i=0;i<len;i++) {
             char currentChar = s.charAt(i);
             int currentValue = romanMap.get(currentChar);
 
-            // If the current value is greater than the previous value, subtract twice the previous value
-            // (since it was already added in the previous iteration) and add the current value
-            if (i > 0 && currentValue > prevValue) {
-                total += currentValue - 2 * prevValue;
+            if (i+1 < len && romanMap.get(s.charAt(i+1)) > currentValue) {
+                val -= currentValue;
             } else {
-                // Otherwise, add the current value to the total
-                total += currentValue;
+                val += currentValue;
             }
-
-            // Update the previous value
-            prevValue = currentValue;
         }
-
-        return total;
+        return val;
     }
 
-    // S = "DCXXI"
-//    public static int romanToInt(String s) {
-//        int val = 0;
-//        int n = s.length();
-//
-//        for (int i = 0; i < n; i++) {
-//            char currentChar = s.charAt(i);
-//
-//            if (i + 1 < n && getValue(s.charAt(i + 1)) > getValue(currentChar)) {
-//                // subtract the val if next element is greater than current
-//                val = val - getValue(currentChar);
-//            } else {
-//                val = val + getValue(currentChar);
-//            }
-//        }
-//
-//        return val;
-//    }
-
-    private static int getValue(char romanNumeral) {
-        switch (romanNumeral) {
-            case 'I':
-                return 1;
-            case 'V':
-                return 5;
-            case 'X':
-                return 10;
-            case 'L':
-                return 50;
-            case 'C':
-                return 100;
-            case 'D':
-                return 500;
-            case 'M':
-                return 1000;
-            default:
-                return 0;
-        }
-    }
     public static void main(String[] args) {
         System.out.println(romanToInt("DCXXI"));
     }
