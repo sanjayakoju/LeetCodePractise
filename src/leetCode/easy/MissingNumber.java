@@ -51,11 +51,11 @@ public class MissingNumber {
         int sum=0;
         int N=nums.length;
         // Arrays.sort(nums);
-        for(int i=0; i<nums.length; i++){
-            sum+=nums[i];
+        for (int num : nums) {
+            sum += num;
         }
-        int tot = (N*(N+1))/2;
-        return tot-sum;
+        int total = (N*(N+1))/2;
+        return total-sum;
     }
 
     public static void main(String[] args) {

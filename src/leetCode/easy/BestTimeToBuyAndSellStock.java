@@ -30,14 +30,13 @@ package leetCode.easy;
  */
 public class BestTimeToBuyAndSellStock {
     public static int maxProfit(int[] prices) {
-
         int max = 0;
         int min = Integer.MAX_VALUE;
-        for (int i =0; i< prices.length; i++) {
-            if(prices[i] < min) {
-                min = prices[i];
+        for (int price : prices) {
+            if (price < min) {
+                min = price;
             } else {
-                int profit = prices[i] - min;
+                int profit = price - min;
                 max = Math.max(max, profit);
             }
         }

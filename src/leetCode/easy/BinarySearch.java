@@ -43,24 +43,15 @@ public class BinarySearch {
         return rBinarySearch(l,h,nums,target);
     }
 
-    public static void main(String[] args) {
-//        int arr[] = {1,2,3,4,5,6,7};
-        int arr[] = {-1,0,3,5,9,12};
-        int target = 9;
-//        int arr[] = {2,5};
-//        int target = 0;
-        System.out.println(search(arr,target));
-    }
-
     public static int rBinarySearch(int l, int h, int[] nums, int target) {
-
-        int mid = 1+(l+h)/2;
+        // Only one element
         if (l == h) {
             if (nums[l] == target)
                 return l;
             else
                 return -1;
         } else {
+            int mid = 1+(l+h)/2;
             if (target == nums[mid]) {
                 return mid;
             }
@@ -73,4 +64,14 @@ public class BinarySearch {
         }
         return -1;
     }
+
+    public static void main(String[] args) {
+//        int arr[] = {1,2,3,4,5,6,7};
+        int arr[] = {-1,0,3,5,9,12};
+        int target = 9;
+//        int arr[] = {2,5};
+//        int target = 0;
+        System.out.println(search(arr,target));
+    }
+
 }

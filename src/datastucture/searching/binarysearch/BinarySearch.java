@@ -21,6 +21,7 @@ public class BinarySearch {
 
     }
 
+    // Recursive
     private static int binarySearchRecursive(int[] nums, int target, int left, int right) {
         
         if (left <= right) {
@@ -37,6 +38,7 @@ public class BinarySearch {
         return -1;
     }
 
+    // Non-Recursive
     public static int binarySearch(int[] nums, int target) {
 
         int left = 0;
@@ -51,8 +53,6 @@ public class BinarySearch {
                right = mid - 1;
             }
         }
-
-
         return -1;
     }
     

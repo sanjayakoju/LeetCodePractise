@@ -1,12 +1,12 @@
 package datastucture.sorting;
 
 /**
- * Time Complexity O(n long n) Divide and conquer
+ * Time Complexity O(n log n) Divide and conquer
  */
 public class QuickSort {
 
     public static void main(String[] args) {
-        int nums[] = {11,22,1,3,60,17,13};
+        int[] nums = {11,22,1,3,60,17,13};
         int size = nums.length;
         int low = 0;
         int high = size-1;

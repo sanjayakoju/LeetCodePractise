@@ -30,7 +30,7 @@ public class ReverseLinkedList {
 
     static ListNode head;
     public static ListNode reverseList(ListNode head) {
-        ListNode next = null;
+        ListNode next;
         ListNode current = head;
         ListNode previous = null;
         if (current == null || current.next == null)

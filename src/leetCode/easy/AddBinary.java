@@ -37,7 +37,6 @@ public class AddBinary {
 
         BigInteger x = new BigInteger(a,2);
         BigInteger y = new BigInteger(b, 2);
-        BigInteger sum = x.add(y);
         return x.add(y).toString(2);
     }
 

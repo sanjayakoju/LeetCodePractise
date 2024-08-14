@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * A comparable object is capable of comparing itself with another object.
- * The class itself must implements the java.lang.Comparable interface to compare its instances.
+ * The class itself must implement the java.lang.Comparable interface to compare its instances.
  * Consider a Movie class that has members like, rating, name, year. Suppose we wish to sort a list
  * of Movies based on year of release. We can implement the Comparable interface with the Movie class,
  * and we override the method compareTo() of Comparable interface.

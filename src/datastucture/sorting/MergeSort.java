@@ -6,7 +6,7 @@ package datastucture.sorting;
 public class MergeSort {
 
     public static void main(String[] args) {
-        int nums[] = {11,22,1,3,60,17,13};
+        int[] nums = {11,22,1,3,60,17,13};
         int size = nums.length;
         int left = 0;
         int right = size-1;
@@ -23,19 +23,23 @@ public class MergeSort {
     private static void mergeSort(int[] nums, int left, int right) {
         if (left < right) {
             int mid = (left + right) / 2;
-            mergeSort(nums, left, mid);
-            mergeSort(nums, mid+1, right);
+            mergeSort(nums, left, mid); // left
+            mergeSort(nums, mid+1, right); // right
 
             merge(nums, left, mid, right);
         }
     }
 
     private static void merge(int[] nums, int left, int mid, int right) {
+        // Find sizes of the two subarrays to be merged
         int n1 = mid - left + 1;
         int n2 = right - mid;
-        int leftArr[] = new int[n1];
-        int rightArr[] = new int[n2];
 
+        // Create temporary arrays
+        int[] leftArr = new int[n1];
+        int[] rightArr = new int[n2];
+
+        // Copy data to temporary arrays
         for (int x=0;x<n1;x++) {
             leftArr[x] = nums[left+x];
         }
@@ -43,8 +47,13 @@ public class MergeSort {
             rightArr[x] = nums[mid+1+x];
         }
 
-        int i=0,j=0,k=left;
+        // Merge the temporary arrays
 
+        // Initial indices of the first and second subarrays
+        int i=0,j=0;
+
+        // Initial index of the merged array
+        int k = left;
         while (i<n1 && j<n2) {
             if (leftArr[i] <= rightArr[j]) {
                 nums[k] = leftArr[i];
@@ -56,12 +65,14 @@ public class MergeSort {
             k++;
         }
 
+        // Copy remaining elements of leftArray[] if any
         while (i<n1) {
             nums[k] = leftArr[i];
             i++;
             k++;
         }
 
+        // Copy remaining elements of rightArray[] if any
         while (j<n2) {
             nums[k] = rightArr[j];
             j++;

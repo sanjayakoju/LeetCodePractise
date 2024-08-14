@@ -4,16 +4,15 @@ import java.util.*;
 
 public class AutoCorrectPrototype {
 
-    public static List<List<String>> anagrams(String words[] , String queries[]) {
+    public static List<List<String>> anagrams(String[] words, String[] queries) {
         List<List<String>> lists = new ArrayList<>();
 
-        for(int i=0;i<queries.length;i++) {
-
+        for (String query : queries) {
             List<String> stringList = new ArrayList<>();
-            for (int j=0;j< words.length;j++) {
-                boolean isAnagrams = isAnagram(queries[i], words[j]);
+            for (String word : words) {
+                boolean isAnagrams = isAnagram(query, word);
                 if (isAnagrams) {
-                    stringList.add(words[j]);
+                    stringList.add(word);
                 }
             }
             Collections.sort(stringList);
@@ -24,10 +23,10 @@ public class AutoCorrectPrototype {
     }
 
     public static void main(String[] args) {
-        String words[] = {"duel", "speed", "dule", "cars", "ld", "dl"};
-        String queries[] = {"spede", "deul","dl"};
+        String[] words = {"duel", "speed", "dule", "cars", "ld", "dl"};
+        String[] queries = {"spede", "deul","dl"};
         List<List<String>> lists = anagrams(words,queries);
-        System.out.println(lists.toString());
+        System.out.println(lists);
     }
 
     public static boolean isAnagram(String s, String t) {

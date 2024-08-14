@@ -32,7 +32,7 @@ package leetCode.medium;
  * 1 <= word.length <= 15
  * board and word consists of only lowercase and uppercase English letters.
  *
- * Time complexity: O(M * N * 4 power L) where 4 is 4 direction of DFS and L is the length of the word
+ * Time complexity: O(R * C * 4 ^ L) where 4 is 4 direction of DFS and L is the length of the word
  *
  * Space complexity: O(m * N * L)
  */
@@ -65,12 +65,14 @@ public class WordSearch {
             return true;
         }
 
-        if (row < 0 || row >= board.length || col < 0 || col >= board[0].length || board[row][col] != word.charAt(index)) {
+        if (row < 0 || row >= board.length || col < 0 || col >= board[0].length || board[row][col] != word.charAt(index) || visited[row][col]) {
             return false;
         }
 
         char temp = board[row][col];
         board[row][col] = ' ';
+
+        visited[row][col] = true;
 
         boolean found = dfs(board, word, row - 1, col, index + 1) ||
                 dfs(board, word, row + 1, col, index + 1) ||
@@ -78,6 +80,7 @@ public class WordSearch {
                 dfs(board, word, row, col + 1, index + 1);
 
         board[row][col] = temp;
+        visited[row][col] = false;
 
         return found;
     }

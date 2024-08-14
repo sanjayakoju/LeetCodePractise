@@ -34,11 +34,11 @@ public class LargestNumberFormedFromArray {
         List<Integer> list = new ArrayList<>();
         boolean isContain = false;
         for(int i=0;i<nums.length;i++) {
-            list.add(Integer.valueOf(nums[i]));
+            list.add(nums[i]);
             if (nums[i]>=1 && !isContain) isContain = true;
         }
 
-        Collections.sort(list, (a,b) -> (String.valueOf(b) + a).compareTo(String.valueOf(a) +b));
+        list.sort((a, b) -> (String.valueOf(b) + a).compareTo(String.valueOf(a) + b));
         String largestStr = list.stream().map(Object::toString).collect(Collectors.joining(""));
         if (!isContain) return "0";
         return largestStr;

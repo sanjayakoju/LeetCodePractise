@@ -1,5 +1,7 @@
 package datastucture.sorting;
 
+import java.util.Arrays;
+
 /**
  * Time Complexity O(n^2)
  */
@@ -9,7 +11,10 @@ public class InsertionSort {
         int nums[] = {11,2,1,3,60,17,13};
         int size = nums.length;
 
-        System.out.printf("Before Soring");
+        System.out.println(Arrays.toString(nums));
+
+        System.out.println("Before Soring");
+
         for (int i=0;i<size-1;i++) {
             int key = nums[i];
             int j = i-1;

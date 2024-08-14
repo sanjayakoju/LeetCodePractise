@@ -136,7 +136,7 @@ public class MinimumWindowSubstring {
                 windowFreq.put(leftChar, windowFreq.get(leftChar) - 1);
 
                 // Check if removing this character breaks the required condition
-                if (targetFreq.containsKey(leftChar) && windowFreq.get(leftChar).intValue() < targetFreq.get(leftChar).intValue()) {
+                if (targetFreq.containsKey(leftChar) && windowFreq.get(leftChar) < targetFreq.get(leftChar)) {
                     formed--;
                 }
 

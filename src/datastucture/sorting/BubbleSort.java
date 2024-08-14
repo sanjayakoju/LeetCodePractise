@@ -1,6 +1,8 @@
 package datastucture.sorting;
 
 
+import java.util.Arrays;
+
 /**
  * Time Complexity O(n^2)
  */
@@ -11,7 +13,9 @@ public class BubbleSort {
         int size = nums.length;
         int temp;
 
-        System.out.printf("Before Sorting");
+        System.out.println("Before Sorting");
+        System.out.println(Arrays.toString(nums));
+
         for (int i=0;i<size-1;i++) {
             for (int j=0;j<size-1;j++) {
                 if (nums[j] > nums[j+1]) {

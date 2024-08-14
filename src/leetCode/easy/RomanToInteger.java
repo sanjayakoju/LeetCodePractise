@@ -74,15 +74,15 @@ public class RomanToInteger {
             int currentValue = romanMap.get(currentChar);
 
             if (i+1 < len && romanMap.get(s.charAt(i+1)) > currentValue) {
-                val -= currentValue;
+                val = val - currentValue;
             } else {
-                val += currentValue;
+                val = val + currentValue;
             }
         }
         return val;
     }
 
     public static void main(String[] args) {
-        System.out.println(romanToInt("DCXXI"));
+        System.out.println(romanToInt("CDXXI"));
     }
 }

@@ -35,7 +35,7 @@ public class BinarySearchTree {
     }
 
 
-    // Binary Search Tree
+    // Binary Search Tree recursive
     private static boolean containsNodeRecursive(Node current, int value) {
         if (current == null) {
             return false;
@@ -45,7 +45,26 @@ public class BinarySearchTree {
             return true;
         }
 
-        return value < current.value ? containsNodeRecursive(current.left, value) : containsNodeRecursive(current.right, value);
+        if (value < current.value) {
+            return containsNodeRecursive(current.left, value);
+        } else {
+            return containsNodeRecursive(current.right, value);
+        }
+    }
+
+    // Non-recursive
+    private static boolean containsNode(Node current, int value) {
+        while (current != null) {
+            if (current.value == value)
+                return true;
+            else if (value < current.value) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {
@@ -56,6 +75,8 @@ public class BinarySearchTree {
         boolean isFound = containsNodeRecursive(node1,5);
         System.out.println("Is Found : "+isFound);
         System.out.println("Is Found : "+containsNodeRecursive(node1,3));
+        System.out.println("Is Found : "+containsNode(node1,3));
+        System.out.println("Is Found : "+containsNode(node1,5));
     }
 
 }

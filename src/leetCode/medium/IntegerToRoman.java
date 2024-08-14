@@ -70,7 +70,7 @@ public class IntegerToRoman {
             // Append the corresponding Roman numeral symbol while the value can be subtracted from num
             while (num >= values[i]) {
                 roman.append(symbols[i]);
-                num -= values[i];
+                num = num - values[i];
             }
         }
 

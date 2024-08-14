@@ -1,6 +1,5 @@
 package leetCode.easy;
 
-import com.sun.tools.javac.Main;
 
 /**
  * Given head, the head of a linked list, determine if the linked list has a cycle in it.
@@ -47,6 +46,14 @@ public class LinkedListCycle {
 
         ListNode slow = head;
         ListNode fast = head.next;
+
+//        while(fast.next != null) {
+//            if (slow == fast)
+//                return true;
+//            slow = slow.next;
+//            fast = fast.next.next;
+//        }
+//        return false;
 
         while(slow != fast) {
             if(fast == null || fast.next == null) {

@@ -38,7 +38,7 @@ import java.util.Map;
 public class TwoSum {
 
     public static int[] twoSum(int[] nums, int target) {
-        int returnArr [] = new int[2];
+        int[] returnArr = new int[2];
 
         // Brute Force solution time complexity O(n2)
         for(int i =0;i<nums.length-1;i++) {
