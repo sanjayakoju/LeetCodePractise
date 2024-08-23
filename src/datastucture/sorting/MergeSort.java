@@ -24,6 +24,8 @@ public class MergeSort {
         if (left < right) {
             int mid = (left + right) / 2;
             mergeSort(nums, left, mid); // left
+
+
             mergeSort(nums, mid+1, right); // right
 
             merge(nums, left, mid, right);
@@ -31,7 +33,7 @@ public class MergeSort {
     }
 
     private static void merge(int[] nums, int left, int mid, int right) {
-        // Find sizes of the two subarrays to be merged
+        // Find sizes of the two sub arrays to be merged
         int n1 = mid - left + 1;
         int n2 = right - mid;
 
@@ -49,7 +51,7 @@ public class MergeSort {
 
         // Merge the temporary arrays
 
-        // Initial indices of the first and second subarrays
+        // Initial indices of the first and second sub arrays
         int i=0,j=0;
 
         // Initial index of the merged array

@@ -19,24 +19,43 @@ public class TreeTraversal {
         root.left = left1;
         root.right = right1;
 
+        System.out.print("Pre Order : ");
         preOrder(root);
+
         System.out.println();
+        System.out.print("Post Order : ");
+        postOrder(root);
+
+        System.out.println();
+        System.out.print("In Order : ");
+        inOrder(root);
+
+        System.out.println();
+        System.out.print("Level : ");
         level(root);
     }
 
     public static void inOrder(TreeNode root) {
         if (root != null) {
             preOrder(root.left);
-            System.out.print(root.val +" ,");
+            System.out.print(root.val +" ");
             preOrder(root.right);
         }
     }
 
     public static void preOrder(TreeNode root) {
         if (root != null) {
-            System.out.print(root.val +" ,");
+            System.out.print(root.val +" ");
             preOrder(root.left);
             preOrder(root.right);
+        }
+    }
+
+    public static void postOrder(TreeNode root) {
+        if (root != null) {
+            postOrder(root.left);
+            postOrder(root.right);
+            System.out.print(root.val + " ");
         }
     }
 
@@ -46,7 +65,7 @@ public class TreeTraversal {
 
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
-            System.out.print(node.val + " ,");
+            System.out.print(node.val + " ");
             if (node.left != null) {
                 queue.offer(node.left);
             }
