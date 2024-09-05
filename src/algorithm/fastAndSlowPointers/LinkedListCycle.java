@@ -39,31 +39,41 @@ import leetCode.easy.ListNode;
  */
 public class LinkedListCycle {
 
-    static leetCode.easy.ListNode head;
+    static ListNode head;
     public static boolean hasCycle(leetCode.easy.ListNode head) {
 
         if (head == null)
             return false;
 
-        leetCode.easy.ListNode slow = head;
-        leetCode.easy.ListNode fast = head.next;
+        ListNode slow = head;
+        ListNode fast = head.next;
 
-        while(slow != fast) {
-            if(fast == null || fast.next == null) {
-                return false;
-            }
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
-        }
 
-        return true;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+//        while(slow != fast) {
+//
+//            if(fast == null || fast.next == null) {
+//                return false;
+//            }
+//            slow = slow.next;
+//            fast = fast.next.next;
+//        }
+//
+//        return true;
     }
 
     public static void main(String[] args) {
         LinkedListCycle list = new LinkedListCycle();
-        list.head = new leetCode.easy.ListNode(3);
-        list.head.next = new leetCode.easy.ListNode(2);
-        list.head.next.next = new leetCode.easy.ListNode(0);
+        list.head = new ListNode(3);
+        list.head.next = new ListNode(2);
+        list.head.next.next = new ListNode(0);
         list.head.next.next.next = new ListNode(-4);
         System.out.println(hasCycle(head));
     }
