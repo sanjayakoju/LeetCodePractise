@@ -37,26 +37,41 @@ import java.util.Set;
 public class LongestSubstringWithoutRepeatingCharacters {
 
     public static int lengthOfLongestSubstring(String s) {
-        int maxLength = -1;
-        String test = "";
+//        int maxLength = -1;
+//        StringBuilder test = new StringBuilder();
+//
+//        if(s.isEmpty())
+//            return 0;
+//        else if (s.length() == 1)
+//            return 1;
+//
+//        for (char c : s.toCharArray()) {
+//            String current = String.valueOf(c);
+//
+//            if (test.toString().contains(current)) {
+//                test = new StringBuilder(test.substring(test.indexOf(current) + 1));
+//            }
+//            test.append(c);
+//            maxLength = Math.max(test.length(), maxLength);
+//        }
+//
+//
+//        return maxLength;
 
-        if(s.isEmpty())
-            return 0;
-        else if (s.length() == 1)
-            return 1;
-
-        for (char c : s.toCharArray()) {
-            String current = String.valueOf(c);
-
-            if (test.contains(current)) {
-                test = test.substring(test.indexOf(current) +1);
+        // Using sliding window
+        Set<Character> set = new HashSet<>();
+        int l = 0;
+        int res = 0;
+        for(int r = 0;r<s.length();r++) {
+            while(set.contains(s.charAt(r))) {
+                set.remove(s.charAt(l));
+                l++;
             }
-            test = test + String.valueOf(c);
-            maxLength = Math.max(test.length(), maxLength);
+            set.add(s.charAt(r));
+            res = Math.max(res, r - l + 1);
         }
+        return res;
 
-
-        return maxLength;
     }
 
     public static void main(String[] args) {

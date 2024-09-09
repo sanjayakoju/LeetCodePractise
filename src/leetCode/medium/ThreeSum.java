@@ -34,46 +34,78 @@ import java.util.stream.Collectors;
 
 public class ThreeSum {
     public static List<List<Integer>> threeSum(int[] nums) {
-         Arrays.sort(nums);
-         Set<List<Integer>> set = new HashSet<>();
-        int l, r;
-         for(int i =0; i<nums.length;i++) {
-//             if(i > 0 && nums[i] == nums[i-1]) {
-//                 continue;
+//         Arrays.sort(nums);
+//         Set<List<Integer>> set = new HashSet<>();
+//        int l, r;
+//         for(int i =0; i<nums.length;i++) {
+////             if(i > 0 && nums[i] == nums[i-1]) {
+////                 continue;
+////             }
+////             int l, r;
+//             l = i+1;
+//             r = nums.length-1;
+//             while (l < r) {
+//                 if (nums[i] + nums[l] + nums[r] == 0) {
+//                     List<Integer> list = new ArrayList<>();
+//                     list.add(nums[i]);
+//                     list.add(nums[l]);
+//                     list.add(nums[r]);
+//                     set.add(list);
+//                     l++;
+////                     while (l < r && nums[l] == nums[l-1]) {
+////                         l++;
+////                     }
+//                 } else if(nums[i] + nums[l] + nums[r] < 0) {
+//                     l++;
+//                 } else {
+//                     r--;
+//                 }
 //             }
-//             int l, r;
-             l = i+1;
-             r = nums.length-1;
-             while (l < r) {
-                 if (nums[i] + nums[l] + nums[r] == 0) {
-                     List<Integer> list = new ArrayList<>();
+//         }
+//        List<List<Integer>> lists = new ArrayList<>(set);
+//         char ch = 'A';
+//         int b = ch;
+//         if(((b >= 65) == false && (b <= 97)) == false) {
+//            System.out.println(b);
+//        }
+//        System.out.println(b);
+//        return lists;
+
+        Set<List<Integer>> set = new HashSet<>();
+        Arrays.sort(nums);
+        int len = nums.length;
+        for(int i=0;i<len;i++) {
+            int a = nums[i];
+            if(i > 0 && a == nums[i-1]) {
+                continue;
+            }
+            int l = i + 1;
+            int r = len - 1;
+
+            while (l < r) {
+                int threeSum = a + nums[l] + nums[r];
+
+                if(threeSum > 0) {
+                    r--;
+                } else if (threeSum < 0) {
+                    l++;
+                } else {
+                    // Found a triplet
+                    List<Integer> list = new ArrayList<>();
                      list.add(nums[i]);
                      list.add(nums[l]);
                      list.add(nums[r]);
                      set.add(list);
-                     l++;
-//                     while (l < r && nums[l] == nums[l-1]) {
-//                         l++;
-//                     }
-                 } else if(nums[i] + nums[l] + nums[r] < 0) {
-                     l++;
-                 } else {
-                     r--;
-                 }
-             }
-         }
-        List<List<Integer>> lists = new ArrayList<>(set);
-         char ch = 'A';
-         int b = ch;
-         if(((b >= 65) == false && (b <= 97)) == false) {
-            System.out.println(b);
+                    l++;
+                    r--;
+                }
+            }
         }
-        System.out.println(b);
-        return lists;
+        return new ArrayList<>(set);
     }
 
     public static void main(String[] args) {
-        int arr[] = {-1,0,1,2,-1,-4,-2,-3,3,0,4};
+        int[] arr = {-1,0,1,2,-1,-4,-2,-3,3,0,4};
         System.out.println(threeSum(arr));
     }
 }

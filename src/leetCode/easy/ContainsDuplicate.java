@@ -1,5 +1,6 @@
 package leetCode.easy;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -26,20 +27,28 @@ import java.util.Set;
  *
  * 1 <= nums.length <= 105
  * -109 <= nums[i] <= 109
+ *
+ * Time complexity: O(n)
+ * Space complexity : depend upon approach
  */
 public class ContainsDuplicate {
 
     public static boolean containsDuplicate(int[] nums) {
+
+        // Using HashMap
+        // Time complexity : O(n)
+        // Space complexity : O(n)
         Map<Integer,Integer> map = new HashMap<>();
-        for(int i=0;i<nums.length;i++) {
-            if (map.containsKey(nums[i])) {
+        for (int j : nums) {
+            if (map.containsKey(j)) {
                 return true;
-            } else {
-                map.put(nums[i],1);
             }
+            map.put(j, 1);
         }
 
         // Using HashSet
+        // Time complexity : O(n)
+        // Space complexity : O(n)
         Set<Integer> set = new HashSet<>();
         for (int num: nums) {
             if (set.contains(num)) {
@@ -47,6 +56,17 @@ public class ContainsDuplicate {
             }
             set.add(num);
         }
+
+        // Can be solve with the sorting
+        // Time complexity : O(n log n)
+        // Space complexity : O(1)
+        Arrays.sort(nums);
+        for(int i=0;i<nums.length-1;i++) {
+            if (nums[i] == nums[i+1]) {
+                return true;
+            }
+        }
+
         return false;
     }
 

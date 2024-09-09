@@ -39,16 +39,20 @@ public class TopKFrequentElements {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i : nums)
             map.merge(i, 1, Integer::sum);//For Getting Frequency
+
         List<Integer> list = new ArrayList<>(map.keySet());
+
         list.sort((a, b) -> map.get(b) - map.get(a)); //Sort by Frequency in descending order
-        int res[] = new int[k];
+
+        int[] res = new int[k];
+
         for (int i = 0; i < k; ++i)
             res[i] = list.get(i);
         return res;
     }
 
     public static void main(String[] args) {
-        int[] arr = {1,1,1,1,2,2,2,3};
+        int[] arr = {1,3,2,2,2,3};
         int[]ans = topKFrequent(arr, 2);
         System.out.println(Arrays.toString(ans));
     }

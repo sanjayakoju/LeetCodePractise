@@ -1,5 +1,6 @@
 package leetCode.easy;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,43 +28,53 @@ import java.util.Map;
  */
 public class validAnagram {
     public static boolean isAnagram(String s, String t) {
-        Map<Character, Integer> map1 = new HashMap<>();
-        Map<Character, Integer> map2 = new HashMap<>();
-        char ch1[] = s.toCharArray();
-        char ch2[] = t.toCharArray();
-        if (ch1.length != ch2.length) {
+
+        if (s.length() != t.length()) {
             return false;
         }
-        for (int i = 0; i < ch1.length;i++) {
-            if(map1.containsKey(ch1[i])) {
-                map1.put(ch1[i], map1.get(ch1[i]) + 1);
-            } else {
-                map1.put(ch1[i], 1);
-            }
-        }
 
-        for (int i = 0; i < ch2.length;i++) {
-            if(map2.containsKey(ch2[i])) {
-                map2.put(ch2[i], map2.get(ch2[i]) + 1);
-            } else {
-                map2.put(ch2[i], 1);
-            }
-        }
-        boolean isContain = false;
-        if (map1.size() != map2.size()) {
-            return false;
-        }
-        for(Map.Entry<Character, Integer> e1: map1.entrySet()) {
-            int a = (map2.get(e1.getKey()) != null) ? map2.get(e1.getKey()) : 0;
-            int b = (e1.getValue() != null ) ? e1.getValue() : 0;
+//        // Time complexity : O(n) , O (S + T)
+//        // Space complexity : O (S + T)
+//        Map<Character, Integer> map1 = new HashMap<>();
+//        Map<Character, Integer> map2 = new HashMap<>();
+//
+//        for (int i = 0; i < s.length(); i++) {
+//
+//            if (map1.containsKey(s.charAt(i))) {
+//                map1.put(s.charAt(i), map1.get(s.charAt(i)) + 1);
+//            } else {
+//                map1.put(s.charAt(i), 1);
+//            }
+//
+//            if (map2.containsKey(t.charAt(i))) {
+//                map2.put(t.charAt(i), map2.get(t.charAt(i)) + 1);
+//            } else {
+//                map2.put(t.charAt(i), 1);
+//            }
+//        }
+//
+//
+//        for (Map.Entry<Character, Integer> e1 : map1.entrySet()) {
+//            int a = (map2.get(e1.getKey()) != null) ? map2.get(e1.getKey()) : 0;
+//
+//            int b = e1.getValue();
+//
+//            if (a != b) {
+//                return false;
+//            }
+//        }
+//        return true;
 
-            if ( a == b) {
-                isContain = true;
-            } else {
-                return false;
-            }
-        }
-        return isContain;
+        // Using sort
+        // Time complexity : O(n log n)
+        // Space complexity: O(n)
+        char [] chS = s.toCharArray();
+        char [] chT = t.toCharArray();
+
+        Arrays.sort(chS);
+        Arrays.sort(chT);
+
+        return Arrays.equals(chS, chT);
     }
 
     public static void main(String[] args) {

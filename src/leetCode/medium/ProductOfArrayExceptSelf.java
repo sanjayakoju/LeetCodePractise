@@ -1,5 +1,7 @@
 package leetCode.medium;
 
+import java.util.Arrays;
+
 /**
  * Leetcode 238
  * Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
@@ -31,8 +33,8 @@ package leetCode.medium;
  */
 public class ProductOfArrayExceptSelf {
 
-    public static int[] productExceptSelf(int nums[]) {
-        int res [] = new int[nums.length];
+    public static int[] productExceptSelf(int[] nums) {
+        int[] res = new int[nums.length];
 
         int prefix = 1;
         for (int i=0;i<nums.length;i++) {
@@ -50,10 +52,8 @@ public class ProductOfArrayExceptSelf {
     }
 
     public static void main(String[] args) {
-        int nums[] = {1,2,3,4};
-        int output[] = productExceptSelf(nums);
-        for (int n: output) {
-            System.out.print(n + " ");
-        }
+        int[] nums = {1,2,3,4};
+        System.out.println(Arrays.toString(productExceptSelf(nums)));
+
     }
 }

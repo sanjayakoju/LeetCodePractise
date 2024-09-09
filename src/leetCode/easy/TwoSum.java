@@ -38,32 +38,32 @@ import java.util.Map;
 public class TwoSum {
 
     public static int[] twoSum(int[] nums, int target) {
-        int[] returnArr = new int[2];
 
-        // Brute Force solution time complexity O(n2)
-        for(int i =0;i<nums.length-1;i++) {
-            for(int j=i+1;j<nums.length;j++) {
-                if((nums[i]+nums[j]) == target) {
-                    returnArr[0] = i;
-                    returnArr[1] = j;
-                    break;
+        int len = nums.length;
+
+        // Brute Force solution
+        // Time complexity O(n2)
+        for(int i=0;i<len;i++) {
+            for(int j=i+1;j<len;j++) {
+                if((nums[i] + nums[j]) == target) {
+                    return new int[]{i,j};
                 }
-
             }
         }
 
-        // Better using HashMap Time complexity O(N)
+
+        // Better using HashMap
+        // Time complexity : O(N)
+        // Space complexity : O(n)
         Map<Integer, Integer> map = new HashMap<>();
         for (int i=0;i<nums.length;i++) {
             int diff = target - nums[i];
             if (map.containsKey(diff)) {
-                returnArr[0] = map.get(diff);
-                returnArr[1] = i;
-                return returnArr;
+                return new int[]{map.get(diff), i,};
             }
            map.put(nums[i], i);
         }
-        return returnArr;
+        return new int[]{};
 
     }
 

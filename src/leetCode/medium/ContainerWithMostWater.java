@@ -99,7 +99,8 @@ public class ContainerWithMostWater {
             // Shorter pole/vertical line
             int shorterLine = Math.min(height[left], height[right]);
             // Update maximum area if required
-            maximumArea = Math.max(maximumArea, shorterLine * (right - left));
+            int length = (right - left);
+            maximumArea = Math.max(maximumArea, shorterLine * length);
             // If there is a longer vertical line present
             if (height[left] < height[right]) {
                 left++;

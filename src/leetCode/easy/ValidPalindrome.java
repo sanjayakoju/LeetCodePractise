@@ -36,21 +36,64 @@ import java.util.Arrays;
 public class ValidPalindrome {
 
     public static boolean isPalindrome(String s) {
-        s = s.replaceAll("[^a-zA-Z0-9]", "");
-        s = s.toLowerCase();
-        char ch[] = s.toCharArray();
-        for (int i = 0, j= ch.length-1; i < ch.length/2; i++,j--) {
-            if(ch[i] != ch[j]) {
+//        s = s.replaceAll("[^a-zA-Z0-9]", "");
+//        s = s.toLowerCase();
+//        char[] ch = s.toCharArray();
+//        for (int i = 0, j= ch.length-1; i < ch.length/2; i++,j--) {
+//            if(ch[i] != ch[j]) {
+//                return false;
+//            }
+//        }
+//        System.out.println(Arrays.toString(ch));
+
+        int left = 0;
+        int right = s.length()-1;
+
+        // Using space complexity : O(n)
+//        StringBuilder sb = new StringBuilder();
+//        for(char c: s.toCharArray()) {
+//            if(Character.isLetterOrDigit(c)) {
+//                sb.append(Character.toLowerCase(c));
+//            }
+//        }
+//
+//        System.out.println(sb);
+//
+//        while (left<=right){
+//            if (sb.charAt(left) == sb.charAt(right)) {
+//                left++;
+//                right--;
+//            } else {
+//                return false;
+//            }
+//        }
+
+        while (left <= right) {
+            char start  = s.charAt(left);
+            char end = s.charAt(right);
+
+            if(!Character.isLetterOrDigit(start)) {
+                left++;
+                continue;
+            }
+
+            if (!Character.isLetterOrDigit(end)) {
+                right--;
+                continue;
+            }
+
+            if(Character.toLowerCase(start) != Character.toLowerCase(end)) {
                 return false;
             }
+            left++;
+            right--;
         }
-        System.out.println(Arrays.toString(ch));
         return true;
     }
 
     public static void main(String[] args) {
-//        String str = "A man, a plan, a canal: Panama";
-        String str = "0P";
+        String str = "A man, a plan, a canal: Panama";
+//        String str = "0P";
         System.out.println(isPalindrome(str));
     }
 }
