@@ -45,25 +45,26 @@ public class LinkedListCycle {
             return false;
 
         ListNode slow = head;
-        ListNode fast = head.next;
+        ListNode fast = head;
 
-//        while(fast.next != null) {
-//            if (slow == fast)
-//                return true;
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast)
+                return true;
+        }
+        return false;
+
+
+//        while(slow != fast) {
+//            if(fast == null || fast.next == null) {
+//                return false;
+//            }
 //            slow = slow.next;
 //            fast = fast.next.next;
 //        }
-//        return false;
-
-        while(slow != fast) {
-            if(fast == null || fast.next == null) {
-                return false;
-            }
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-
-        return true;
+//
+//        return true;
     }
 
     public static void main(String[] args) {

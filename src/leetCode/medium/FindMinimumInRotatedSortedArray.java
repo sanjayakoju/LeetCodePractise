@@ -42,14 +42,31 @@ public class FindMinimumInRotatedSortedArray {
         int left = 0;
         int right = nums.length - 1;
 
-        while (left < right) {
-            int mid = left + (right - left) / 2;
-            if (nums[mid] > nums[right])
+//        while (left < right) {
+//            int mid = left + (right - left) / 2;
+//            if (nums[mid] > nums[right])
+//                left = mid + 1;
+//            else if (nums[mid] < nums[right])
+//                right = mid;
+//        }
+//        return nums[left];
+
+
+        while (left <= right) {
+
+            if(nums[left] <= nums[right]) {
+                return nums[left];
+            }
+
+            int mid = (left + right) / 2;
+
+            if(nums[mid] >= nums[left]) {
                 left = mid + 1;
-            else if (nums[mid] < nums[right])
+            } else  {
                 right = mid;
+            }
         }
-        return nums[left];
+        return 0;
     }
 
     public static void main(String[] args) {
