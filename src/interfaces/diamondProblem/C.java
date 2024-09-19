@@ -6,7 +6,7 @@ package interfaces.diamondProblem;
  * This create ambiguity to the compiler and it will throw an error
  **/
 
-public class C implements A, B{
+public class C implements A, B {
 
     public static void main(String[] args) {
         C c = new C();

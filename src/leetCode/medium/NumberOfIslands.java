@@ -41,7 +41,8 @@ public class NumberOfIslands {
     public int numIslands(char[][] grid) {
         this.g  = grid;
         rows = grid.length;
-        if (rows == 0) return 0;
+        if (rows == 0)
+            return 0;
         int count = 0;
         cols = grid[0].length;
 

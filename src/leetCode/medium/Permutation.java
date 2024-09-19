@@ -8,8 +8,34 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * [1,2,3] input
- * [[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1];
+ * 46. Permutations
+ * Solved
+ * Medium
+ * Topics
+ * Companies
+ * Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: nums = [1,2,3]
+ * Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+ * Example 2:
+ *
+ * Input: nums = [0,1]
+ * Output: [[0,1],[1,0]]
+ * Example 3:
+ *
+ * Input: nums = [1]
+ * Output: [[1]]
+ *
+ *
+ * Constraints:
+ *
+ * 1 <= nums.length <= 6
+ * -10 <= nums[i] <= 10
+ * All the integers of nums are unique.
  */
 public class Permutation {
 
@@ -22,8 +48,24 @@ public class Permutation {
 
     public static List<List<Integer>> getPermutation(int [] arr, int l, int r) {
 
+//         List<List<Integer>> perms = new ArrayList<>();
+//         perms.add(new ArrayList<>());
+//
+//         for(int n: arr) {
+//             List<List<Integer>> nextPerms = new ArrayList<>();
+//
+//             for(List<Integer> p: perms) {
+//                 for(int i=0;i<p.size() + 1;i++) {
+//                     List<Integer> pCopy = new ArrayList<>(p);
+//                     pCopy.add(i, n);
+//                     nextPerms.add(pCopy);
+//                 }
+//             }
+//             perms = nextPerms;
+//         }
+//         return perms;
         List<List<Integer>> finalResult = new ArrayList<>();
-        if (l== r) {
+        if (l == r) {
            List<Integer> myList = new ArrayList<>();
            for (int num: arr) {
                myList.add(num);
@@ -37,14 +79,17 @@ public class Permutation {
             }
         }
 
+
+
         return finalResult;
     }
+
 
     public static void main(String[] args) {
         int [] arr = {1,2,3};
         System.out.println(getPermutation(arr, 0, arr.length -1));
 
-        sortMap();
+//        sortMap();
     }
 
     private static void sortMap() {

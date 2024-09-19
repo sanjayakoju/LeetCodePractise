@@ -91,5 +91,8 @@ public class WordSearch {
         String word = "ABCCED";
         WordSearch wordSearch = new WordSearch();
         System.out.println(wordSearch.exist(board, word));
+
+        ThreadLocal<Integer> threadLocalValue = ThreadLocal.withInitial(() -> 1);
+
     }
 }
