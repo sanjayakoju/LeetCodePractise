@@ -38,10 +38,13 @@ public class ComparableDemo implements Comparable<ComparableDemo> {
 
     public static void main(String[] args) {
         List<ComparableDemo> list = new ArrayList<>();
-        list.add(new ComparableDemo("Sanjaya", "BKT", 28));
-        list.add(new ComparableDemo("Omkar", "BTL", 32));
+        list.add(new ComparableDemo("Amkar", "BTL", 32));
         list.add(new ComparableDemo("Shrawan", "BRT", 29));
+        list.add(new ComparableDemo("Sanjaya", "BKT", 45));
+
         Collections.sort(list);
+        int pos = Collections.binarySearch(list, new ComparableDemo("Sanjaya", "BKT", 45) );
+        System.out.println(pos);
         for(ComparableDemo l: list) {
             System.out.println(l);
         }

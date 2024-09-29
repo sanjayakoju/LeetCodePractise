@@ -18,6 +18,30 @@ class Student {
         this.deptIDs = deptIDs;
     }
 
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Integer> getDeptIDs() {
+        return deptIDs;
+    }
+
+    public void setDeptIDs(List<Integer> deptIDs) {
+        this.deptIDs = deptIDs;
+    }
+
     public static void main(String[] args) {
         // Create the lists
         List<Student> list1 = new ArrayList<>();
@@ -51,6 +75,11 @@ class Student {
                 .filter(entry -> entry.getValue() >= 2)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toSet());
+
+            Map<Integer, String> map = students.stream()
+                    .collect(Collectors.toMap(Student::getStudentId, Student::getName));
+
+        System.out.println("MY Map :"+map);
 
         // Filter departments that meet the criteria
         return departments.stream()

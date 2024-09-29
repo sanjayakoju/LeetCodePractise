@@ -4,6 +4,7 @@ import datastucture.graph.Graph;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Work on the base of Queue (FIFO)
@@ -22,7 +23,7 @@ public class BFS {
         int parentNode[] = new int[adj.length];
 
         // Create a queue for BFS
-        LinkedList<Integer> queue = new LinkedList<>();
+        Queue<Integer> queue = new LinkedList<>();
 
         // Mark the current node as visited and enqueue it
         visited[source] = true;

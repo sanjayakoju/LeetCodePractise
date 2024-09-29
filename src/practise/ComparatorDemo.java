@@ -59,7 +59,7 @@ public class ComparatorDemo  {
 
         NameComparator nameComparator = new NameComparator();
         AgeComparator ageComparator = new AgeComparator();
-        Collections.sort(list, nameComparator);
+        list.sort(nameComparator);
         for(ComparatorDemo l: list) {
             System.out.println(l);
         }
