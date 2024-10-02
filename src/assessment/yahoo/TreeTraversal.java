@@ -35,14 +35,16 @@ public class TreeTraversal {
         level(root);
     }
 
+    // DFS
     public static void inOrder(TreeNode root) {
         if (root != null) {
-            preOrder(root.left);
+            inOrder(root.left);
             System.out.print(root.val +" ");
-            preOrder(root.right);
+            inOrder(root.right);
         }
     }
 
+    // DFS
     public static void preOrder(TreeNode root) {
         if (root != null) {
             System.out.print(root.val +" ");
@@ -51,6 +53,7 @@ public class TreeTraversal {
         }
     }
 
+    // DFS
     public static void postOrder(TreeNode root) {
         if (root != null) {
             postOrder(root.left);
@@ -59,6 +62,7 @@ public class TreeTraversal {
         }
     }
 
+    // BFS
     public static void level(TreeNode root) {
         Queue<TreeNode> queue = new ArrayDeque<>();
         queue.add(root);

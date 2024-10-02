@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -21,7 +22,7 @@ public class Permutation {
     public static List<List<Integer>> getPermutation(int [] arr, int l, int r) {
 
         List<List<Integer>> finalResult = new ArrayList<>();
-        if (l== r) {
+        if (l == r) {
            List<Integer> myList = new ArrayList<>();
            for (int num: arr) {
                myList.add(num);
@@ -60,6 +61,36 @@ public class Permutation {
                         LinkedHashMap::new));
 
         System.out.println(result);
+
+        Map<Integer, String> maps = new HashMap<>();
+        maps.put(1, "Apple");
+        maps.put(2, "Banana");
+        maps.put(3, "Cherry");
+
+        // Stream over map entries and filter
+        maps.entrySet()
+                .stream()
+                .filter(entry -> entry.getKey() % 2 == 0) // filter even keys
+                .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
+
+
+        Map<Integer, String> transformedMap = maps.entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        entry -> entry.getKey() * 2,       // transform key
+                        entry -> entry.getValue().toUpperCase() // transform value
+                ));
+
+        transformedMap.forEach((k, v) -> System.out.println(k + ": " + v));
+
+        List<String> words = Arrays.asList("apple", "banana", "cherry", "apricot");
+
+        Map<Character, List<String>> groupedByFirstLetter = words.stream()
+                .collect(Collectors.groupingBy(word -> word.charAt(0)));
+
+        // Result: {a=[apple, apricot], b=[banana], c=[cherry]}
+
+
     }
 
 }
