@@ -1,11 +1,11 @@
 package designPatterns.structural.adapter;
 
 /**
- * Adapter pattern works as a bridge between two incompatible interfaces. This type of design pattern comes under
- * structural pattern as this pattern combines the capability of two independent interfaces.
+ * Adapter pattern works as a bridge between two incompatible coreJava.interfaces. This type of design pattern comes under
+ * structural pattern as this pattern combines the capability of two independent coreJava.interfaces.
  *
  * This pattern involves a single class which is responsible to join functionalities of independent or incompatible
- * interfaces
+ * coreJava.interfaces
  *
  * Eg: Consider a scenario in which there is an app that's developed in the US which returns the top speed of luxury
  * cars in miles per hour (MPH). Now we need to use the same app for our client in the UK that wants the same results

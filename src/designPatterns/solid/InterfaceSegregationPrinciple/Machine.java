@@ -2,9 +2,9 @@ package designPatterns.solid.InterfaceSegregationPrinciple;
 
 /**
  * Definition: Clients should not be forced to depend on methods they do not use.
- * Instead of having large interfaces, break them into smaller, more specific ones.
+ * Instead of having large coreJava.interfaces, break them into smaller, more specific ones.
  *
- * Example: Let’s design interfaces for a machine with multiple operations.
+ * Example: Let’s design coreJava.interfaces for a machine with multiple operations.
  */
 
 // Violating ISP
