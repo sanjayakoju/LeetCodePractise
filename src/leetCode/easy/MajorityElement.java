@@ -30,22 +30,24 @@ import java.util.Map;
 public class MajorityElement {
 
     public static int majorityElement(int[] nums) {
-        int mid = nums.length/2;
-        Map<Integer,Integer> map = new HashMap<>();
-        for(int i=0;i<nums.length;i++) {
-            if(map.containsKey(nums[i])) {
-                map.put(nums[i], map.get(nums[i]) + 1);
-            } else {
-                map.put(nums[i],1);
-            }
-        }
+        int res = 0, count = 0;
 
-        for(Map.Entry<Integer, Integer> entry: map.entrySet()) {
-            if(entry.getValue() > mid) {
-                return entry.getKey();
+        // for(int n: nums) {
+        //     if(count == 0)
+        //         res = n;
+        //     count += (n == res? 1: -1);
+        // }
+
+        // return res;
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int n : nums) {
+            map.put(n, map.getOrDefault(n, 0) + 1);
+            if(map.get(n) > count) {
+                res = n;
+                count = map.get(n);
             }
         }
-        return -1;
+        return res;
     }
 
     public static void main(String[] args) {

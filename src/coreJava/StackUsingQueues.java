@@ -9,9 +9,9 @@ class StackUsingQueues {
 
     // Push operation
     public void push(int value) {
-        queue2.add(value);
+        queue2.add(value); // 1, 2
         while (!queue1.isEmpty()) {
-            queue2.add(queue1.poll());
+            queue2.add(queue1.poll()); // 2, 1
         }
         // Swap queues
         Queue<Integer> temp = queue1;

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  * leetcode 347. Top K Frequent Elements
@@ -37,17 +38,37 @@ public class TopKFrequentElements {
 
     public static int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
-        for (int i : nums)
-            map.merge(i, 1, Integer::sum);//For Getting Frequency
+        for (int i : nums) {
+//            map.merge(i, 1, Integer::sum);//For Getting Frequency OR
+            map.put(i, map.getOrDefault(i, 0) + 1);
+        }
 
         List<Integer> list = new ArrayList<>(map.keySet());
 
         list.sort((a, b) -> map.get(b) - map.get(a)); //Sort by Frequency in descending order
 
+        //Using Heap Max
+        PriorityQueue<int[]> maxHeap = new PriorityQueue<>((a, b) -> {
+            // If frequencies are the same, compare elements (larger element first)
+            if (b[1] == a[1]) {
+                return b[0] - a[0];
+            }
+            // Otherwise, compare by frequency (higher frequency first)
+            return b[1] - a[1];
+        });
+
+        // Step 3: Add all elements from the frequency map to the heap
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            maxHeap.offer(new int[]{entry.getKey(), entry.getValue()});
+        }
+
         int[] res = new int[k];
 
-        for (int i = 0; i < k; ++i)
-            res[i] = list.get(i);
+        for (int i = 0; i < k; i++) {
+//            res[i] = list.get(i);
+            res[i] = maxHeap.poll()[0];
+        }
+
         return res;
     }
 

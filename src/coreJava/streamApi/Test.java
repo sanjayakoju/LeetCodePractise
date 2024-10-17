@@ -1,6 +1,7 @@
 package coreJava.streamApi;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +41,20 @@ public class Test {
                 .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
 
         System.out.println(strings);
+
+        List<String> words = Arrays.asList("Hello", "World");
+
+// Using map()
+        List<String[]> result = words.stream()
+                .map(word -> word.split("")) // Returns a stream of String arrays
+                .collect(Collectors.toList());
+
+// Using flatMap()
+        List<String> flatResult = words.stream()
+                .flatMap(word -> Arrays.stream(word.split(""))) // Flattens the structure
+                .collect(Collectors.toList());
+        System.out.println(flatResult);
+
 
     }
 }

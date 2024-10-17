@@ -29,7 +29,7 @@ package leetCode.easy;
  */
 public class IsomorphicStrings {
 
-    public boolean isIsomorphic(String s, String t) {
+    public static boolean isIsomorphic(String s, String t) {
         if(s.length() != t.length()) return false;
 
         int [] mapS = new int[256];
@@ -48,5 +48,9 @@ public class IsomorphicStrings {
             mapT[c2] = c1;
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isIsomorphic("egg", "add"));
     }
 }

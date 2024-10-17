@@ -24,11 +24,8 @@ public class MergeSort {
         if (left < right) {
             int mid = (left + right) / 2;
             mergeSort(nums, left, mid); // left
-
-
             mergeSort(nums, mid+1, right); // right
-
-            merge(nums, left, mid, right);
+            merge(nums, left, mid, right); // merging
         }
     }
 

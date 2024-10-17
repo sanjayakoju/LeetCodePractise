@@ -42,17 +42,43 @@ public class RotateArray {
         int n = nums.length;
         k = k % n; // Handle case where K is greater than the array length;
 
-        int [] rotateArr = new int[n];
-        for (int i=0;i<n;i++) {
-            int newPosition = (i+k) % n;
-            rotateArr[newPosition] = nums[i];
+//        int [] rotateArr = new int[n];
+//        for (int i=0;i<n;i++) {
+//            int newPosition = (i+k) % n;
+//            rotateArr[newPosition] = nums[i];
+//        }
+//        return rotateArr;
+
+        // for (int i = 0; i < k; i++) {
+        //     int temp = nums[n - 1];
+
+        //     // Shift elements to the right
+        //     for (int j = n - 1; j > 0; j--) {
+        //         nums[j] = nums[j - 1];
+        //     }
+
+        //     nums[0] = temp;
+        // }
+
+        int num[] = new int[n];
+
+        for(int i=0;i<n;i++)
+        {
+            num[(i+k)%n]=nums[i];
         }
-        return rotateArr;
+
+
+        for(int i=0;i<n;i++)
+        {
+            nums[i]=num[i];
+
+        }
+        return nums;
     }
 
     public static void main(String[] args) {
         int [] nums = {1,2,3,4,5,6,7};
-        int [] rotateArrays = rotate(nums, 3);
+        int [] rotateArrays = rotate(nums, 3); // [5, 6, 7, 1, 2, 3, 4]
         System.out.println(Arrays.toString(rotateArrays));
     }
 }
