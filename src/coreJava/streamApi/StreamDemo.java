@@ -1,7 +1,10 @@
 package coreJava.streamApi;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -34,6 +37,53 @@ public class StreamDemo {
         return employees;
     }
 
+    private static void sortMap() {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("apple", 3);
+        map.put("banana", 2);
+        map.put("cherry", 1);
+
+        // Sort by values in ascending order
+        Map<String, Integer> result = map.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue())  // Sort by value
+                .collect(Collectors.toMap(Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new));
+
+        System.out.println(result);
+
+        Map<Integer, String> maps = new HashMap<>();
+        maps.put(1, "Apple");
+        maps.put(2, "Banana");
+        maps.put(3, "Cherry");
+
+        // Stream over map entries and filter
+        maps.entrySet()
+                .stream()
+                .filter(entry -> entry.getKey() % 2 == 0) // filter even keys
+                .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
+
+
+        Map<Integer, String> transformedMap = maps.entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        entry -> entry.getKey() * 2,       // transform key
+                        entry -> entry.getValue().toUpperCase() // transform value
+                ));
+
+        transformedMap.forEach((k, v) -> System.out.println(k + ": " + v));
+
+        List<String> words = Arrays.asList("apple", "banana", "cherry", "apricot");
+
+        Map<Character, List<String>> groupedByFirstLetter = words.stream()
+                .collect(Collectors.groupingBy(word -> word.charAt(0)));
+
+        // Result: {a=[apple, apricot], b=[banana], c=[cherry]}
+
+
+    }
+
     public static void main(String[] args) {
         List<Employee> employees = StreamDemo.loadData();
 
@@ -56,5 +106,7 @@ public class StreamDemo {
         Map<String,List<Employee>> listMap = employees.stream()
                 .collect(Collectors.groupingBy(e -> e.getAddress().getCity()));
         System.out.println("Group by city: \n"+listMap+"\n");
+
+        sortMap();
     }
 }

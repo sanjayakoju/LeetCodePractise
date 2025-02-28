@@ -5,20 +5,6 @@ package datastucture.sorting;
  */
 public class QuickSort {
 
-    public static void main(String[] args) {
-        int[] nums = {11,22,1,3,60,17,13};
-        int size = nums.length;
-        int low = 0;
-        int high = size-1;
-        quickSort(nums, low, high);
-
-        System.out.println();
-        System.out.println("After Sorting");
-        for (int num : nums) {
-            System.out.printf(num + " ");
-        }
-    }
-
     public static void quickSort(int[] nums, int low, int high) {
         if (low<high) {
             int pi = partition(nums, low, high);
@@ -45,5 +31,19 @@ public class QuickSort {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {11,22,1,3,60,17,13};
+        int size = nums.length;
+        int low = 0;
+        int high = size-1;
+        quickSort(nums, low, high);
+
+        System.out.println();
+        System.out.println("After Sorting");
+        for (int num : nums) {
+            System.out.printf(num + " ");
+        }
     }
 }

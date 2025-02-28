@@ -24,7 +24,7 @@ public class MyAbstractExtend extends MyAbstract {
     }
 
     public static void main(String[] args) {
-        MyAbstractExtend ob = new MyAbstractExtend();
+        MyAbstract ob = new MyAbstractExtend();
         ob.funcA();
         ob.funcB();
         ob.funcC();

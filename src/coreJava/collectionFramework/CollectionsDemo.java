@@ -53,5 +53,7 @@ public class CollectionsDemo {
             itr.next();
         }
         System.out.println(list.toString());
+
+        Map<Student, Integer> st = new HashMap<>();
     }
 }

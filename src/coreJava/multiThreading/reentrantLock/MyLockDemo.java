@@ -3,6 +3,8 @@ package coreJava.multiThreading.reentrantLock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * ReentrantLock is a lock in the java.util.concurrent.locks package, providing a way to explicitly control synchronization,
+ * with features like fairness and the ability to interrupt a thread waiting for a lock.
  * Provided in Java to provide synchronization with greater flexibility.
  */
 public class MyLockDemo implements Runnable {
