@@ -68,13 +68,32 @@ public class validAnagram {
         // Using sort
         // Time complexity : O(n log n)
         // Space complexity: O(n)
-        char [] chS = s.toCharArray();
-        char [] chT = t.toCharArray();
+//        char [] chS = s.toCharArray();
+//        char [] chT = t.toCharArray();
+//
+//        Arrays.sort(chS);
+//        Arrays.sort(chT);
+//
+//        return Arrays.equals(chS, chT);
 
-        Arrays.sort(chS);
-        Arrays.sort(chT);
+        int[] count = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            int a = s.charAt(i) - 'a';
+            System.out.println("s : " + a);
 
-        return Arrays.equals(chS, chT);
+            int b = t.charAt(i) - 'a';
+            System.out.println("t : " + b);
+            count[s.charAt(i) - 'a']++;
+            count[t.charAt(i) - 'a']--;
+        }
+
+        for (int val : count) {
+            System.out.println("val : "+val);
+            if (val != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {

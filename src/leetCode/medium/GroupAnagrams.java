@@ -12,6 +12,8 @@ public class GroupAnagrams {
         Map<String, List<String>> map = new HashMap<>();
 
         // Using character arrays
+        // Time complexity: O(m * n)
+        // Space complexity: O(m)
         for (String s : strs) {
             int[] count = new int[26];
 
@@ -19,29 +21,34 @@ public class GroupAnagrams {
                 count[c - 'a']++;
             }
 
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < 26; i++) {
-                sb.append('#');
-                sb.append(count[i]);
-            }
-            String key = sb.toString();
+//            StringBuilder sb = new StringBuilder();
+//            for (int i = 0; i < 26; i++) {
+//                sb.append('#');
+//                sb.append(count[i]);
+//            }
+//            String key = sb.toString();
 
-            if (!map.containsKey(key)) {
-                map.put(key, new ArrayList<>());
-            }
+//            if (!map.containsKey(key)) {
+//                map.put(key, new ArrayList<>());
+//            }
+
+            String key = Arrays.toString(count);
+            map.putIfAbsent(key, new ArrayList<>());
             map.get(key).add(s);
         }
 
-        // Using sort
-        for (String st : strs) {
-            char [] ch = st.toCharArray();
-            Arrays.sort(ch);
-            String sortedString = new String(ch);
-            if(!map.containsKey(sortedString)) {
-                map.put(sortedString, new ArrayList<>());
-            }
-            map.get(sortedString).add(st);
-        }
+        // Using sort and map
+        // Time complexity: O(m * n logn)
+        // Space complexity: O(m * n)
+//        for (String st : strs) {
+//            char [] ch = st.toCharArray();
+//            Arrays.sort(ch);
+//            String sortedString = new String(ch);
+//            if(!map.containsKey(sortedString)) {
+//                map.put(sortedString, new ArrayList<>());
+//            }
+//            map.get(sortedString).add(st);
+//        }
 
         return new ArrayList<>(map.values());
     }

@@ -1,5 +1,6 @@
 package leetCode.easy;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,6 +66,27 @@ public class TwoSum {
         }
         return new int[]{};
 
+        // using two pointer
+        // Time complexity O(n log n) because we use sorting
+        // Space complexity O(1)
+//        Arrays.sort(nums);
+//        int left = 0;
+//        int right = nums.length - 1;
+//
+//        System.out.println("Array after sort : "+Arrays.toString(nums));
+//
+//        while (left != right) {
+//            int sum = nums[left] + nums[right];
+//
+//            if (sum == target) {
+//                return new int[]{left, right};
+//            } else if (sum > target) {
+//                right--;
+//            } else {
+//                left++;
+//            }
+//        }
+//        return new int[]{};
     }
 
     public static void main(String[] args) {
