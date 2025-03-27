@@ -48,18 +48,23 @@ public class TopKFrequentElements {
         list.sort((a, b) -> map.get(b) - map.get(a)); //Sort by Frequency in descending order
 
         //Using Heap Max
-        PriorityQueue<int[]> maxHeap = new PriorityQueue<>((a, b) -> {
-            // If frequencies are the same, compare elements (larger element first)
-            if (b[1] == a[1]) {
-                return b[0] - a[0];
-            }
-            // Otherwise, compare by frequency (higher frequency first)
-            return b[1] - a[1];
-        });
+//        PriorityQueue<int[]> maxHeap = new PriorityQueue<>((a, b) -> {
+//            // If frequencies are the same, compare elements (larger element first)
+//            if (b[1] == a[1]) {
+//                return b[0] - a[0];
+//            }
+//            // Otherwise, compare by frequency (higher frequency first)
+//            return b[1] - a[1];
+//        });
+
+        PriorityQueue<int[]> maxHeap = new PriorityQueue<>((a, b) -> a[0] - b[0]);
 
         // Step 3: Add all elements from the frequency map to the heap
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             maxHeap.offer(new int[]{entry.getKey(), entry.getValue()});
+            if (maxHeap.size() > k) {
+                maxHeap.poll();
+            }
         }
 
         int[] res = new int[k];

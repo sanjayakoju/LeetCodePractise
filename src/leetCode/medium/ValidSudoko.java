@@ -77,13 +77,13 @@ public class ValidSudoko {
         return true;
     }
 
-    public static boolean isValid(char[][] board, int row, int col, int k) {
+    public static boolean isValid(char[][] board, int row, int col, int num) {
         for(int i=0;i<9;i++) {
-            if(board[row][i] == k) {
+            if(board[row][i] == num) {
                 return false;
             }
 
-            if(board[i][col] == k) {
+            if(board[i][col] == num) {
                 return false;
             }
         }
@@ -94,7 +94,7 @@ public class ValidSudoko {
 
         for (int i = sr; i<sr+3;i++) {
             for (int j = sc; j <sc+3; j++) {
-                if (board[i][j] == k) {
+                if (board[i][j] == num) {
                     return false;
                 }
             }

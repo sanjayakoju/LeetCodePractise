@@ -71,6 +71,7 @@ public class ThreeSum {
 //        System.out.println(b);
 //        return lists;
 
+        // Time complexity: O(n2)
         Set<List<Integer>> set = new HashSet<>();
         Arrays.sort(nums);
         int len = nums.length;

@@ -1,5 +1,7 @@
 package leetCode.medium;
 
+import java.util.Arrays;
+
 /**
  * 167. Two Sum II - Input Array Is Sorted
  * Solved
@@ -64,5 +66,30 @@ public class TwoSumIIInputArrayIsSorted {
         }
         // return foundArr;
         return new int[] {-1,-1};
+    }
+
+    private static int[] twoSum1(int [] nums, int target) {
+        int l = 0;
+        int r = nums.length-1;
+
+        while (l < r) {
+            int sum = nums[l] + nums[r];
+
+            if (sum == target) {
+                return new int[]{l+1, r+1};
+            }
+
+            if (sum > target) {
+                r--;
+            } else {
+                l++;
+            }
+        }
+        return new int[]{-1, -1};
+    }
+
+    public static void main(String[] args) {
+        int num[] = {1,2,3,5,7,9,11};
+        System.out.println(Arrays.toString(twoSum1(num, 9)));
     }
 }

@@ -80,6 +80,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
 //        String str = "dvdf";
 //        String str = "aab";
         System.out.println(lengthOfLongestSubstring(str));
+        System.out.println(longestSubString(str));
 
         // Bitwise
         int x = 3 & 5;
@@ -95,5 +96,21 @@ public class LongestSubstringWithoutRepeatingCharacters {
         System.out.println(toDo.size() + " " + toDo.poll());
         System.out.println(" " + toDo.peek() + " " + toDo.poll());
         System.out.println(" " + toDo.poll() + " " + toDo.poll());
+    }
+
+    static int longestSubString(String st) {
+        Set<Character> set = new HashSet<>();
+        int l = 0;
+        int max = 0;
+
+        for (int r=0; r<st.length();r++) {
+            while (set.contains(st.charAt(r))) {
+                set.remove(st.charAt(l));
+                l++;
+            }
+            set.add(st.charAt(r));
+            max = Math.max(max, r - l + 1);
+        }
+        return max;
     }
 }

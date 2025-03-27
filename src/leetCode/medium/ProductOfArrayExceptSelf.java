@@ -37,15 +37,22 @@ public class ProductOfArrayExceptSelf {
         int[] res = new int[nums.length];
 
         int prefix = 1;
+        System.out.println("Prefix");
         for (int i=0;i<nums.length;i++) {
             res[i] = prefix;
             prefix = prefix * nums[i];
+            System.out.print(prefix  +" ");
         }
 
+        System.out.println("array : "+Arrays.toString(res));
+
         int postFix = 1;
+
+        System.out.println("Post fix");
         for (int i = nums.length-1; i>=0; i--) {
             res[i] = res[i] * postFix;
             postFix = postFix * nums[i];
+            System.out.print(postFix  +" ");
         }
 
         return res;

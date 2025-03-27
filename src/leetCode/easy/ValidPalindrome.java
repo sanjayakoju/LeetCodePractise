@@ -91,9 +91,38 @@ public class ValidPalindrome {
         return true;
     }
 
+    private static boolean isPalindrome1(String s) {
+        s = s.toLowerCase();
+
+        int l = 0;
+        int r = s.length()-1;
+
+        while (l<r) {
+            char start = s.charAt(l);
+            char end = s.charAt(r);
+
+            if (!Character.isLetterOrDigit(start)) {
+                l++;
+                continue;
+            }
+
+            if (!Character.isLetterOrDigit(end)) {
+                r--;
+                continue;
+            }
+
+            if (start != end)
+                return false;
+            l++;
+            r--;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         String str = "A man, a plan, a canal: Panama";
 //        String str = "0P";
         System.out.println(isPalindrome(str));
+        System.out.println(isPalindrome1(str));
     }
 }

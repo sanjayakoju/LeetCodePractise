@@ -76,15 +76,47 @@ public class ContainerWithMostWater {
 
     public static void main(String[] args) {
 //        int arr [] = {4,3,2,1,4};
-//        int arr [] = {1,8,6,2,5,4,8,3,7};
-        int arr [] = {1,1};
+        int arr [] = {1,8,6,2,5,4,8,3,7};
+//        int arr [] = {1,1};
         System.out.println(maxArea(arr));
         System.out.println(maxArea2(arr));
-        List<Integer> list = new ArrayList<>();
-        Set<Integer> set = new HashSet<>();
-        set.add(1);
-        list.isEmpty();
-        list.size();
+        System.out.println(maxAreaBruteForce(arr));
+        System.out.println(linearSol(arr));
+    }
+
+    public static int maxAreaBruteForce(int [] height) {
+        int res = 0;
+        int len = height.length;
+        for (int i=0;i<len;i++) {
+            for (int j=i+1;j<len;j++) {
+                int length = (j - i);
+                int shorterLine = Math.min(height[i], height[j]);
+                int area = length * shorterLine;
+                res = Math.max(area, res);
+            }
+        }
+        return res;
+    }
+
+    public static int linearSol(int [] height) {
+        int res = 0;
+        int l = 0;
+        int r = height.length - 1;
+
+        while (l < r) {
+            int length = (r - l);
+            int shorterLine = Math.min(height[l], height[r]);
+            int area = length * shorterLine;
+            res = Math.max(area, res);
+
+            if (height[l] < height[r]) {
+                l++;
+            } else {
+                r--;
+            }
+        }
+
+        return res;
     }
 
 
