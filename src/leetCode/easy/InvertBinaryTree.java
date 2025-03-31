@@ -1,6 +1,10 @@
 package leetCode.easy;
 
 import assessment.yahoo.TreeNode;
+import com.sun.source.tree.Tree;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 226. Invert Binary Tree
@@ -55,12 +59,29 @@ public class InvertBinaryTree {
         if (root == null)
             return null;
 
+        // BFS
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            TreeNode temp = node.left;
+            node.left = node.right;
+            node.right = temp;
+
+            if(node.left != null) {
+                queue.offer(node.left);
+            }
+            if(node.right != null) {
+                queue.offer(node.right);
+            }
+        }
+
         // swap the children
         TreeNode temp = root.left;
         root.left = root.right;
         root.right = temp;
 
-        // recursive call to left and right
+        // recursive call to left and right (DFS)
         invertTree(root.left);
         invertTree(root.right);
         return root;

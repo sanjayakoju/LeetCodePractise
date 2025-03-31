@@ -38,37 +38,25 @@ import assessment.yahoo.TreeNode;
  * -231 <= Node.val <= 231 - 1
  */
 public class ValidateBinarySearchTree {
-    /**
-     * Definition for a binary tree node.
-     * public class TreeNode {
-     *     int val;
-     *     TreeNode left;
-     *     TreeNode right;
-     *     TreeNode() {}
-     *     TreeNode(int val) { this.val = val; }
-     *     TreeNode(int val, TreeNode left, TreeNode right) {
-     *         this.val = val;
-     *         this.left = left;
-     *         this.right = right;
-     *     }
-     * }
-     */
 
     public boolean isValidBST(TreeNode root) {
-        if (root == null)
-            return true;
-        return dfs(root, null, null);
+        return dfs(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
 
-    private boolean dfs(TreeNode root, Integer min, Integer max) {
+    private boolean dfs(TreeNode root, long left, long right) {
         if (root == null) {
             return true;
         }
 
-        if ((min != null && root.val <= min) || (max != null && root.val >= max)) {
+        if (!(left < root.val && root.val < right)) {
             return false;
         }
 
-        return dfs(root.left, min , root.val) && dfs(root.right , root.val, max);
+        return dfs(root.left, left , root.val) &&
+                dfs(root.right, root.val, right);
+    }
+
+    public static void main(String[] args) {
+
     }
 }

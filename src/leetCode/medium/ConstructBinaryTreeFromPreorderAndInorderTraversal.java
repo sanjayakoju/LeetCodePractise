@@ -37,24 +37,43 @@ import java.util.Arrays;
  */
 public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
 
+    int preIdx = 0;
+    int inIdx = 0;
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        if (preorder.length == 0 || inorder.length == 0)
+        // if (preorder.length == 0 || inorder.length == 0)
+        //     return null;
+
+        // TreeNode root = new TreeNode(preorder[0]);
+        // int mid = 0;
+
+        // for(int i=0;i<inorder.length;i++) {
+        //     if(preorder[0] == inorder[i])
+        //         mid = i;
+        // }
+
+        // root.left = buildTree(Arrays.copyOfRange(preorder, 1, mid + 1),
+        //                     Arrays.copyOfRange(inorder, 0, mid));
+        // root.right = buildTree(Arrays.copyOfRange(preorder, mid + 1, preorder.length),
+        //                     Arrays.copyOfRange(inorder, mid + 1, inorder.length));
+
+        // return root;
+        return dfs(preorder, inorder, Integer.MAX_VALUE);
+    }
+
+    private TreeNode dfs(int[] preorder, int[] inorder, int limit) {
+        if (preIdx >= preorder.length) return null;
+        if (inorder[inIdx] == limit) {
+            inIdx++;
             return null;
-
-        TreeNode root = new TreeNode(preorder[0]);
-        int mid = 0;
-
-        for(int i=0;i<inorder.length;i++) {
-            if(preorder[0] == inorder[i])
-                mid = i;
         }
 
-        root.left = buildTree(Arrays.copyOfRange(preorder, 1, mid + 1),
-                Arrays.copyOfRange(inorder, 0, mid));
-        root.right = buildTree(Arrays.copyOfRange(preorder, mid + 1, preorder.length),
-                Arrays.copyOfRange(inorder, mid + 1, inorder.length));
-
+        TreeNode root = new TreeNode(preorder[preIdx++]);
+        root.left = dfs(preorder, inorder, root.val);
+        root.right = dfs(preorder, inorder, limit);
         return root;
+    }
+
+    public static void main(String[] args) {
 
     }
 }
